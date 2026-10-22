@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Seyoncé Improv Comedy | Mischief Night Seance</title>
     
-    <!-- Preconnect to Google Fonts for Fast Loading -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Playfair+Display:ital,wght@0,600;0,800;1,400&family=Metamorphous&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
@@ -45,14 +44,10 @@
             position: relative;
         }
 
-        /* Celestial Outer Border Frame */
         body::before {
             content: "";
             position: fixed;
-            top: 10px;
-            left: 10px;
-            right: 10px;
-            bottom: 10px;
+            top: 10px; left: 10px; right: 10px; bottom: 10px;
             border: 1px solid rgba(229, 169, 60, 0.4);
             outline: 2px solid rgba(229, 169, 60, 0.2);
             outline-offset: 4px;
@@ -80,37 +75,47 @@
             z-index: 10;
         }
 
-        /* Header / Authentic Hand-Drawn Banner Styling */
         header {
             text-align: center;
             padding: 2rem 1rem 1rem;
             position: relative;
         }
 
-        .header-logo-wrapper {
-            position: relative;
-            max-width: 780px;
+        /* Pure CSS / SVG Header Layout */
+        .banner-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            max-width: 800px;
             margin: 0 auto;
-            display: inline-block;
-            filter: drop-shadow(0 0 25px rgba(229, 169, 60, 0.45));
+            flex-wrap: nowrap;
         }
 
-        .header-logo-wrapper img {
-            width: 100%;
-            height: auto;
-            display: block;
-            border-radius: 4px;
+        .banner-title-text {
+            font-family: 'Cinzel Decorative', cursive;
+            font-size: clamp(2rem, 6.5vw, 4.5rem);
+            font-weight: 900;
+            color: var(--gold-primary);
+            background: linear-gradient(180deg, #fff1c4 0%, #f5c15c 40%, #d48c28 70%, #693d05 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 20px rgba(229, 169, 60, 0.4);
+            letter-spacing: 2px;
+            line-height: 1;
         }
 
-        /* Interactive Eye Hover Blink Overlay */
-        .eye-blink-overlay {
-            position: absolute;
-            top: 22%;
-            left: 46%;
-            width: 8%;
-            height: 25%;
+        .banner-orb-wrapper {
+            width: clamp(70px, 12vw, 110px);
+            height: clamp(70px, 12vw, 110px);
+            flex-shrink: 0;
             cursor: pointer;
-            z-index: 20;
+            filter: drop-shadow(0 0 15px rgba(157, 78, 221, 0.8));
+            transition: transform 0.3s ease;
+        }
+
+        .banner-orb-wrapper:hover {
+            transform: scale(1.1);
         }
 
         .eyelid-path {
@@ -120,13 +125,29 @@
             transition: transform 0.15s ease-in-out;
         }
 
-        .eye-blink-overlay:hover .eyelid-path {
+        .banner-orb-wrapper:hover .eyelid-path {
             animation: blink-eye 0.4s ease-in-out infinite;
         }
 
         @keyframes blink-eye {
             0%, 100% { transform: scaleY(0); }
             50% { transform: scaleY(1); }
+        }
+
+        .ribbon-banner {
+            font-family: 'Metamorphous', cursive;
+            font-size: clamp(0.9rem, 2.8vw, 1.4rem);
+            color: #241302;
+            background: linear-gradient(180deg, #fce8bd 0%, #e0b263 50%, #996e23 100%);
+            border: 2px solid #3a1e03;
+            border-radius: 4px;
+            padding: 0.3rem 2rem;
+            display: inline-block;
+            margin-top: 0.8rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.6);
         }
 
         .tagline {
@@ -137,7 +158,6 @@
             margin: 1.2rem auto 0;
         }
 
-        /* Tarot Cards Layout */
         .tarot-card {
             background: var(--bg-card);
             border: 2px solid var(--gold-primary);
@@ -151,8 +171,7 @@
         .tarot-card::after {
             content: "👁";
             position: absolute;
-            top: 8px;
-            right: 12px;
+            top: 8px; right: 12px;
             font-size: 0.9rem;
             color: var(--gold-primary);
             opacity: 0.6;
@@ -168,13 +187,8 @@
             padding-bottom: 0.8rem;
         }
 
-        p {
-            color: var(--text-main);
-            font-size: 1.1rem;
-            margin-bottom: 1.2rem;
-        }
+        p { color: var(--text-main); font-size: 1.1rem; margin-bottom: 1.2rem; }
 
-        /* Mischief Night Flyer Event Highlight */
         .event-feature {
             background: linear-gradient(135deg, rgba(42, 27, 64, 0.9), rgba(15, 10, 26, 0.95));
             border: 2px solid var(--candle-amber);
@@ -204,20 +218,9 @@
             line-height: 1.8;
         }
 
-        .event-location {
-            color: var(--text-muted);
-            font-size: 1rem;
-            margin-bottom: 1.5rem;
-        }
+        .event-location { color: var(--text-muted); font-size: 1rem; margin-bottom: 1.5rem; }
 
-        /* Buttons */
-        .btn-group {
-            display: flex;
-            gap: 1.2rem;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-top: 1.5rem;
-        }
+        .btn-group { display: flex; gap: 1.2rem; justify-content: center; flex-wrap: wrap; margin-top: 1.5rem; }
 
         .btn {
             background: linear-gradient(180deg, #f7d287 0%, #e5a93c 50%, #9e6911 100%);
@@ -242,20 +245,9 @@
             background: linear-gradient(180deg, #ffe094 0%, #ff9e2c 100%);
         }
 
-        .btn-secondary {
-            background: transparent;
-            color: var(--gold-primary);
-            border: 1px solid var(--gold-primary);
-            box-shadow: none;
-        }
+        .btn-secondary { background: transparent; color: var(--gold-primary); border: 1px solid var(--gold-primary); box-shadow: none; }
+        .btn-secondary:hover { background: rgba(229, 169, 60, 0.15); color: var(--gold-light); box-shadow: 0 0 12px rgba(229, 169, 60, 0.3); }
 
-        .btn-secondary:hover {
-            background: rgba(229, 169, 60, 0.15);
-            color: var(--gold-light);
-            box-shadow: 0 0 12px rgba(229, 169, 60, 0.3);
-        }
-
-        /* Video Embed */
         .video-container {
             position: relative;
             padding-bottom: 56.25%;
@@ -267,22 +259,9 @@
             box-shadow: 0 0 15px rgba(0,0,0,0.8);
         }
 
-        .video-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: 0;
-        }
+        .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
 
-        /* Photo Gallery Grid */
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 1.5rem;
-            margin-top: 1.5rem;
-        }
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; margin-top: 1.5rem; }
 
         .gallery-item {
             border: 2px solid var(--gold-primary);
@@ -297,24 +276,10 @@
             transition: transform 0.3s ease, border-color 0.3s ease;
         }
 
-        .gallery-item:hover {
-            transform: scale(1.03);
-            border-color: var(--candle-amber);
-        }
+        .gallery-item:hover { transform: scale(1.03); border-color: var(--candle-amber); }
+        .gallery-item img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
 
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center;
-        }
-
-        /* Improv Oracle Widget */
-        .oracle-box {
-            text-align: center;
-            background: radial-gradient(circle at center, rgba(42, 27, 64, 0.9) 0%, rgba(10, 7, 20, 0.95) 100%);
-            border: 2px solid var(--gold-primary);
-        }
+        .oracle-box { text-align: center; background: radial-gradient(circle at center, rgba(42, 27, 64, 0.9) 0%, rgba(10, 7, 20, 0.95) 100%); border: 2px solid var(--gold-primary); }
 
         #prompt-output {
             font-family: 'Playfair Display', serif;
@@ -342,49 +307,62 @@
             margin-top: 3rem;
         }
 
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            margin: 1rem 0;
-            flex-wrap: wrap;
-        }
-
-        .footer-link {
-            color: var(--gold-light);
-            text-decoration: none;
-            font-family: 'Metamorphous', cursive;
-            font-size: 0.95rem;
-            transition: color 0.2s ease;
-        }
-
-        .footer-link:hover {
-            color: var(--candle-amber);
-            text-decoration: underline;
-        }
+        .footer-links { display: flex; justify-content: center; gap: 1.5rem; margin: 1rem 0; flex-wrap: wrap; }
+        .footer-link { color: var(--gold-light); text-decoration: none; font-family: 'Metamorphous', cursive; font-size: 0.95rem; transition: color 0.2s ease; }
+        .footer-link:hover { color: var(--candle-amber); text-decoration: underline; }
     </style>
 </head>
 <body>
 
-    <!-- Outer Frame Stars -->
     <div class="corner-star top-left">✦</div>
     <div class="corner-star top-right">✦</div>
     <div class="corner-star bottom-left">✦</div>
     <div class="corner-star bottom-right">✦</div>
 
     <div class="container">
-        <!-- Header -->
+        <!-- Header Section -->
         <header>
-            <div class="header-logo-wrapper">
-                <!-- High-Resolution Crop of the Hand-Drawn Flyer Logo Banner -->
-                <img src="header-banner.png" alt="Seyoncé Improv Comedy Header Banner">
+            <div class="banner-container">
+                <span class="banner-title-text">SEY</span>
                 
-                <!-- Interactive Hover-Blink Target Area over Crystal Ball -->
-                <div class="eye-blink-overlay" title="Hover to blink!">
-                    <svg viewBox="0 0 100 100" style="width:100%; height:100%;">
-                        <path class="eyelid-path" d="M10 50 C25 20 75 20 90 50 C75 80 25 80 10 50 Z" fill="#240c38" opacity="0.95"/>
+                <!-- Center Interactive Blinking Crystal Ball Orb -->
+                <div class="banner-orb-wrapper" title="Hover to blink!">
+                    <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <radialGradient id="orbBg" cx="50%" cy="50%" r="50%">
+                                <stop offset="0%" stop-color="#c084fc"/>
+                                <stop offset="60%" stop-color="#581c87"/>
+                                <stop offset="100%" stop-color="#1e0538"/>
+                            </radialGradient>
+                            <radialGradient id="eyeBg" cx="50%" cy="50%" r="50%">
+                                <stop offset="0%" stop-color="#38bdf8"/>
+                                <stop offset="70%" stop-color="#1e1b4b"/>
+                                <stop offset="100%" stop-color="#020617"/>
+                            </radialGradient>
+                        </defs>
+                        <!-- Golden Base -->
+                        <path d="M35 82 Q50 72 65 82 L70 95 H30 Z" fill="#e5a93c" stroke="#3a1e03" stroke-width="2"/>
+                        <!-- Crystal Orb -->
+                        <circle cx="50" cy="50" r="42" fill="url(#orbBg)" stroke="#e5a93c" stroke-width="3"/>
+                        <!-- Floating Smiles -->
+                        <path d="M42 25 Q50 20 58 25" stroke="#fce8bd" stroke-width="1.2" fill="none"/>
+                        <path d="M22 60 Q27 65 32 60" stroke="#fce8bd" stroke-width="1.2" fill="none"/>
+                        <path d="M68 60 Q73 65 78 60" stroke="#fce8bd" stroke-width="1.2" fill="none"/>
+                        <!-- All Seeing Eye -->
+                        <path d="M25 50 C35 32 65 32 75 50 C65 68 35 68 25 50 Z" fill="url(#eyeBg)" stroke="#e5a93c" stroke-width="2"/>
+                        <circle cx="50" cy="50" r="10" fill="#1e1b4b" stroke="#fce8bd" stroke-width="1"/>
+                        <circle cx="50" cy="50" r="5" fill="#020617"/>
+                        <circle cx="48" cy="48" r="2" fill="#ffffff"/>
+                        <!-- Hover Eyelid Overlay -->
+                        <path class="eyelid-path" d="M25 50 C35 32 65 32 75 50 C65 68 35 68 25 50 Z" fill="#140226" stroke="#e5a93c" stroke-width="2"/>
                     </svg>
                 </div>
+
+                <span class="banner-title-text">NCÉ</span>
+            </div>
+
+            <div>
+                <div class="ribbon-banner">IMPROV COMEDY</div>
             </div>
 
             <p class="tagline">Channeling punchlines, spectral wit, and unscripted mayhem from the great beyond.</p>
@@ -441,18 +419,18 @@
             <h2 class="card-title">Spectral Moments</h2>
             <div class="gallery-grid">
                 <div class="gallery-item">
-                    <img src="IMG_0441.jpeg" alt="Seyoncé troupe members laughing on stage">
+                    <img src="IMG_0441.jpeg.jpg" alt="Seyoncé troupe members laughing on stage">
                 </div>
                 <div class="gallery-item">
                     <img src="photo3.jpeg" alt="Seyoncé cast performing seated scene">
                 </div>
                 <div class="gallery-item">
-                    <img src="197C66E0-E0F6-4FCD-AE70-E09FE4BD6A3B.PNG" alt="Seyoncé Spirited Improv Comedy show poster">
+                    <img src="poster.png" alt="Seyoncé Spirited Improv Comedy show poster">
                 </div>
             </div>
         </section>
 
-        <!-- Interactive Oracle Widget with 35 Prompts -->
+        <!-- Interactive Oracle Widget -->
         <section class="tarot-card oracle-box">
             <h2 class="card-title">The Digital Oracle</h2>
             <p>Need a scene suggestion right now? Consult the crystal ball:</p>
