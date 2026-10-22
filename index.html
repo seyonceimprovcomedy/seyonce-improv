@@ -80,33 +80,47 @@
             z-index: 10;
         }
 
-        /* Header / Logo Styling */
+        /* Header / Authentic Hand-Drawn Banner Styling */
         header {
             text-align: center;
-            padding: 2rem 1rem 1.5rem;
+            padding: 2rem 1rem 1rem;
             position: relative;
         }
 
-        .flyer-header-graphic {
-            width: 100%;
+        .header-logo-wrapper {
+            position: relative;
             max-width: 780px;
             margin: 0 auto;
+            display: inline-block;
+            filter: drop-shadow(0 0 25px rgba(229, 169, 60, 0.45));
+        }
+
+        .header-logo-wrapper img {
+            width: 100%;
+            height: auto;
             display: block;
-            filter: drop-shadow(0 0 25px rgba(229, 169, 60, 0.4));
+            border-radius: 4px;
         }
 
-        .crystal-ball-interactive {
+        /* Interactive Eye Hover Blink Overlay */
+        .eye-blink-overlay {
+            position: absolute;
+            top: 22%;
+            left: 46%;
+            width: 8%;
+            height: 25%;
             cursor: pointer;
+            z-index: 20;
         }
 
-        .eyelid {
+        .eyelid-path {
             transform-box: fill-box;
             transform-origin: center;
             transform: scaleY(0);
             transition: transform 0.15s ease-in-out;
         }
 
-        .crystal-ball-interactive:hover .eyelid {
+        .eye-blink-overlay:hover .eyelid-path {
             animation: blink-eye 0.4s ease-in-out infinite;
         }
 
@@ -120,10 +134,10 @@
             color: var(--text-muted);
             font-style: italic;
             max-width: 600px;
-            margin: 1rem auto 0;
+            margin: 1.2rem auto 0;
         }
 
-        /* Cards Layout */
+        /* Tarot Cards Layout */
         .tarot-card {
             background: var(--bg-card);
             border: 2px solid var(--gold-primary);
@@ -262,7 +276,7 @@
             border: 0;
         }
 
-        /* Custom Photo Gallery Grid */
+        /* Photo Gallery Grid */
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -361,78 +375,17 @@
     <div class="container">
         <!-- Header -->
         <header>
-            <svg class="flyer-header-graphic" viewBox="0 0 800 240" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <defs>
-                    <linearGradient id="goldFontGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-                        <stop offset="0%" stop-color="#fff1c4"/>
-                        <stop offset="35%" stop-color="#f5c15c"/>
-                        <stop offset="70%" stop-color="#d48c28"/>
-                        <stop offset="100%" stop-color="#693d05"/>
-                    </linearGradient>
-                    <linearGradient id="ribbonGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-                        <stop offset="0%" stop-color="#fce8bd"/>
-                        <stop offset="50%" stop-color="#e0b263"/>
-                        <stop offset="100%" stop-color="#996e23"/>
-                    </linearGradient>
-                    <radialGradient id="orbGlowGrad" cx="50%" cy="50%" r="50%">
-                        <stop offset="0%" stop-color="#c084fc"/>
-                        <stop offset="55%" stop-color="#581c87"/>
-                        <stop offset="100%" stop-color="#1e0538"/>
-                    </radialGradient>
-                    <radialGradient id="eyeGlowGrad" cx="50%" cy="50%" r="50%">
-                        <stop offset="0%" stop-color="#38bdf8"/>
-                        <stop offset="70%" stop-color="#1e1b4b"/>
-                        <stop offset="100%" stop-color="#020617"/>
-                    </radialGradient>
-                </defs>
-
-                <text x="70" y="115" font-family="'Cinzel Decorative', cursive" font-size="88" font-weight="900" fill="url(#goldFontGrad)" stroke="#301b04" stroke-width="4" letter-spacing="2">SEY</text>
-                <text x="500" y="115" font-family="'Cinzel Decorative', cursive" font-size="88" font-weight="900" fill="url(#goldFontGrad)" stroke="#301b04" stroke-width="4" letter-spacing="2">NCÉ</text>
-
-                <g class="crystal-ball-interactive">
-                    <g stroke="url(#goldFontGrad)" stroke-width="1.5" opacity="0.8">
-                        <line x1="400" y1="10" x2="400" y2="25"/>
-                        <line x1="400" y1="135" x2="400" y2="148"/>
-                        <line x1="338" y1="75" x2="352" y2="75"/>
-                        <line x1="448" y1="75" x2="462" y2="75"/>
-                        <line x1="356" y1="31" x2="366" y2="41"/>
-                        <line x1="444" y1="31" x2="434" y2="41"/>
-                        <line x1="356" y1="119" x2="366" y2="109"/>
-                        <line x1="444" y1="119" x2="434" y2="109"/>
-                    </g>
-
-                    <path d="M370 120 Q400 108 430 120 L440 142 H360 Z" fill="url(#goldFontGrad)" stroke="#3a1e03" stroke-width="2"/>
-                    <path d="M362 132 Q400 122 438 132" stroke="#3a1e03" stroke-width="2" fill="none"/>
-
-                    <circle cx="400" cy="75" r="48" stroke="url(#goldFontGrad)" stroke-width="4" fill="none"/>
-                    <circle cx="400" cy="75" r="44" fill="url(#orbGlowGrad)" stroke="#e5a93c" stroke-width="1.5"/>
-
-                    <path d="M393 42 Q400 38 407 42" stroke="#fce8bd" stroke-width="1.2" fill="none"/>
-                    <path d="M394 46 Q400 51 406 46" stroke="#fce8bd" stroke-width="1.2" fill="none"/>
-
-                    <path d="M368 88 Q373 93 378 88" stroke="#fce8bd" stroke-width="1.2" fill="none"/>
-                    <circle cx="370" cy="84" r="1" fill="#fce8bd"/>
-                    <circle cx="376" cy="84" r="1" fill="#fce8bd"/>
-
-                    <path d="M422 88 Q427 93 432 88" stroke="#fce8bd" stroke-width="1.2" fill="none"/>
-                    <circle cx="424" cy="84" r="1" fill="#fce8bd"/>
-                    <circle cx="430" cy="84" r="1" fill="#fce8bd"/>
-
-                    <path d="M375 75 C385 58 415 58 425 75 C415 92 385 92 375 75 Z" fill="url(#eyeGlowGrad)" stroke="url(#goldFontGrad)" stroke-width="2"/>
-                    <circle cx="400" cy="75" r="11" fill="#1e1b4b" stroke="#fce8bd" stroke-width="1.2"/>
-                    <circle cx="400" cy="75" r="5" fill="#020617"/>
-                    <circle cx="398" cy="73" r="2" fill="#ffffff"/>
-
-                    <path class="eyelid" d="M375 75 C385 58 415 58 425 75 C415 92 385 92 375 75 Z" fill="#140226" stroke="url(#goldFontGrad)" stroke-width="2"/>
-                </g>
-
-                <g>
-                    <path d="M210 185 L180 165 L210 150 L230 170 Z" fill="#996e23" stroke="#3a1e03" stroke-width="1.5"/>
-                    <path d="M590 185 L620 165 L590 150 L570 170 Z" fill="#996e23" stroke="#3a1e03" stroke-width="1.5"/>
-                    <path d="M220 150 Q400 170 580 150 L570 195 Q400 215 230 195 Z" fill="url(#ribbonGrad)" stroke="#3a1e03" stroke-width="2.5"/>
-                    <text x="400" y="184" font-family="'Metamorphous', cursive" font-size="26" font-weight="bold" fill="#241302" letter-spacing="4" text-anchor="middle">IMPROV COMEDY</text>
-                </g>
-            </svg>
+            <div class="header-logo-wrapper">
+                <!-- High-Resolution Crop of the Hand-Drawn Flyer Logo Banner -->
+                <img src="header-banner.png" alt="Seyoncé Improv Comedy Header Banner">
+                
+                <!-- Interactive Hover-Blink Target Area over Crystal Ball -->
+                <div class="eye-blink-overlay" title="Hover to blink!">
+                    <svg viewBox="0 0 100 100" style="width:100%; height:100%;">
+                        <path class="eyelid-path" d="M10 50 C25 20 75 20 90 50 C75 80 25 80 10 50 Z" fill="#240c38" opacity="0.95"/>
+                    </svg>
+                </div>
+            </div>
 
             <p class="tagline">Channeling punchlines, spectral wit, and unscripted mayhem from the great beyond.</p>
         </header>
@@ -483,26 +436,23 @@
             </div>
         </section>
 
-        <!-- Gallery Section with Uploaded Photos -->
+        <!-- Gallery Section -->
         <section class="tarot-card">
             <h2 class="card-title">Spectral Moments</h2>
             <div class="gallery-grid">
                 <div class="gallery-item">
-                    <!-- Replace photo1.jpg with your exact uploaded image file name -->
-                    <img src="photo1.png" alt="Seyoncé Spirited Improv Comedy show poster">
+                    <img src="photo1.png" alt="Seyoncé troupe members laughing on stage">
                 </div>
                 <div class="gallery-item">
-                    <!-- Replace photo2.jpg with your exact uploaded image file name -->
                     <img src="photo2.jpeg" alt="Seyoncé cast performing seated scene">
                 </div>
                 <div class="gallery-item">
-                    <!-- Replace poster.png with your exact uploaded image file name -->
-                    <img src="photo3.jpeg" alt="Seyoncé cast performing laughing scene">
+                    <img src="photo3.jpeg" alt="Seyoncé Spirited Improv Comedy show poster">
                 </div>
             </div>
         </section>
 
-        <!-- Interactive Oracle -->
+        <!-- Interactive Oracle Widget with 35 Prompts -->
         <section class="tarot-card oracle-box">
             <h2 class="card-title">The Digital Oracle</h2>
             <p>Need a scene suggestion right now? Consult the crystal ball:</p>
@@ -530,7 +480,7 @@
             "Couples therapy between Dr. Frankenstein and his monster.",
             "An alien civilization whose only contact with Earth is old episodes of home renovation shows.",
             "Explaining modern Wi-Fi passwords to a Victorian ghost trapped in the router.",
-            "A fortune teller who can only see really mundane things 5 seconds into the future."
+            "A fortune teller who can only see really mundane things 5 seconds into the future.",
             "A ghost hunter trying to evict a spirit who pays rent on time.",
             "A séance where the medium accidentally summons a disgruntled 1920s plumber.",
             "An exorcist who keeps getting distracted by the haunted house’s open-concept kitchen.",
