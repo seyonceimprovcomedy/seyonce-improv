@@ -4,12 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Seyoncé Improv Comedy | Mischief Night Seance</title>
-    <!-- Vintage & Celestial Typography -->
+    
+    <!-- Preconnect to Google Fonts for Fast Loading -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Playfair+Display:ital,wght@0,600;0,800;1,400&family=Metamorphous&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    
     <style>
         :root {
             --bg-dark: #07050d;
-            --bg-card: rgba(18, 13, 31, 0.85);
+            --bg-card: rgba(18, 13, 31, 0.9);
             --gold-primary: #e5a93c;
             --gold-light: #f7d287;
             --gold-dark: #a8731d;
@@ -41,7 +45,7 @@
             position: relative;
         }
 
-        /* Celestial / Tarot Decorative Frame Overlay */
+        /* Celestial Outer Border Frame */
         body::before {
             content: "";
             position: fixed;
@@ -76,64 +80,58 @@
             z-index: 10;
         }
 
-        /* Header / Logo Styling matching Flyer */
+        /* Header / Logo Styling */
         header {
             text-align: center;
             padding: 3rem 1rem 2rem;
             position: relative;
         }
 
-        /* Floating Eye Logo with Interactive Hover Animation */
+        /* Flyer Crystal Ball Logo Container with Floating & Blinking */
         .flyer-logo-icon {
-            width: 120px;
-            height: 120px;
+            width: 140px;
+            height: 140px;
             margin: 0 auto 1.5rem;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: radial-gradient(circle, rgba(157, 78, 221, 0.6) 0%, rgba(20, 10, 35, 0.9) 70%);
-            border: 3px solid var(--gold-primary);
-            border-radius: 50%;
-            box-shadow: 0 0 25px rgba(157, 78, 221, 0.8), inset 0 0 15px rgba(255, 158, 44, 0.5);
+            filter: drop-shadow(0 0 20px rgba(157, 78, 221, 0.8));
             animation: float-eerie 4s ease-in-out infinite;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: transform 0.4s ease;
             cursor: pointer;
         }
 
         .flyer-logo-icon svg {
-            width: 80px;
-            height: 80px;
-            transition: transform 0.4s ease;
+            width: 140px;
+            height: 140px;
+            display: block;
         }
 
-        /* Eyelid Styling for Blink Effect */
+        /* Eyelid Blink Animation on Hover */
         .eyelid {
-            transform-origin: 50% 15px;
-            transition: transform 0.25s ease-in-out;
+            transform-box: fill-box;
+            transform-origin: center;
+            transform: scaleY(0);
+            transition: transform 0.15s ease-in-out;
         }
 
-        /* Floating animation */
         @keyframes float-eerie {
-            0% { transform: translateY(0px) rotate(0deg); box-shadow: 0 5px 20px rgba(157, 78, 221, 0.7); }
-            50% { transform: translateY(-12px) rotate(1deg); box-shadow: 0 18px 30px rgba(255, 158, 44, 0.8); }
-            100% { transform: translateY(0px) rotate(0deg); box-shadow: 0 5px 20px rgba(157, 78, 221, 0.7); }
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(1deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
         }
 
-        /* Hover Effect & Blink Animation Trigger */
         .flyer-logo-icon:hover {
-            transform: translateY(-18px) scale(1.12) rotate(-3deg);
-            border-color: var(--candle-amber);
-            box-shadow: 0 20px 40px rgba(255, 158, 44, 0.95), inset 0 0 25px rgba(255, 224, 148, 0.8);
+            transform: scale(1.08) translateY(-5px);
         }
 
         .flyer-logo-icon:hover .eyelid {
-            animation: blink-eye 0.4s ease-in-out;
+            animation: blink-eye 0.4s ease-in-out infinite;
         }
 
         @keyframes blink-eye {
-            0% { transform: scaleY(1); }
-            50% { transform: scaleY(0.05); }
-            100% { transform: scaleY(1); }
+            0%, 100% { transform: scaleY(0); }
+            50% { transform: scaleY(1); }
         }
 
         h1.main-title {
@@ -173,21 +171,17 @@
             margin: 0 auto;
         }
 
-        /* Ornate Card Component */
+        /* Cards Layout */
         .tarot-card {
             background: var(--bg-card);
             border: 2px solid var(--gold-primary);
-            box-shadow: 
-                0 0 15px rgba(0, 0, 0, 0.8),
-                inset 0 0 15px rgba(229, 169, 60, 0.15);
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.8), inset 0 0 15px rgba(229, 169, 60, 0.15);
             border-radius: 8px;
             padding: 2.5rem;
             margin-bottom: 2.5rem;
             position: relative;
-            backdrop-filter: blur(5px);
         }
 
-        /* Inner Corner Accents for Cards */
         .tarot-card::after {
             content: "👁";
             position: absolute;
@@ -250,7 +244,7 @@
             margin-bottom: 1.5rem;
         }
 
-        /* Buttons matching Vintage Aesthetic */
+        /* Buttons */
         .btn-group {
             display: flex;
             gap: 1.2rem;
@@ -295,7 +289,7 @@
             box-shadow: 0 0 12px rgba(229, 169, 60, 0.3);
         }
 
-        /* Video Embed Frame */
+        /* Video Embed */
         .video-container {
             position: relative;
             padding-bottom: 56.25%;
@@ -313,9 +307,10 @@
             left: 0;
             width: 100%;
             height: 100%;
+            border: 0;
         }
 
-        /* Photo Gallery Grid */
+        /* Photo Gallery */
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -332,7 +327,6 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            position: relative;
             box-shadow: 0 4px 10px rgba(0,0,0,0.6);
             transition: transform 0.3s ease;
         }
@@ -348,7 +342,7 @@
             object-fit: cover;
         }
 
-        /* Improv Oracle Crystal Ball Widget */
+        /* Improv Oracle Widget */
         .oracle-box {
             text-align: center;
             background: radial-gradient(circle at center, rgba(42, 27, 64, 0.9) 0%, rgba(10, 7, 20, 0.95) 100%);
@@ -405,26 +399,40 @@
 </head>
 <body>
 
-    <!-- Celestial Outer Frame Stars -->
+    <!-- Outer Frame Stars -->
     <div class="corner-star top-left">✦</div>
     <div class="corner-star top-right">✦</div>
     <div class="corner-star bottom-left">✦</div>
     <div class="corner-star bottom-right">✦</div>
 
     <div class="container">
-        <!-- Header Section -->
+        <!-- Header -->
         <header>
-            <!-- Floating & Hover-Blinking All-Seeing Eye Icon -->
-            <div class="flyer-logo-icon">
-                <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <g class="eyelid">
-                        <path d="M50 15 C20 15 5 50 5 50 C5 50 20 85 50 85 C80 85 95 50 95 50 C95 50 80 15 50 15 Z" stroke="#e5a93c" stroke-width="4" fill="rgba(42,27,64,0.7)"/>
-                        <circle cx="50" cy="50" r="22" stroke="#f7d287" stroke-width="3" fill="#07050d"/>
-                        <circle cx="50" cy="50" r="10" fill="#9d4edd"/>
-                        <circle cx="47" cy="47" r="4" fill="#ffffff"/>
-                        <path d="M15 50 Q50 25 85 50" stroke="#ff9e2c" stroke-width="2" fill="none" opacity="0.6"/>
-                        <path d="M15 50 Q50 75 85 50" stroke="#ff9e2c" stroke-width="2" fill="none" opacity="0.6"/>
-                    </g>
+            <!-- Flyer-Accurate Crystal Ball & Eye Logo with Hover Blink -->
+            <div class="flyer-logo-icon" title="Hover to blink!">
+                <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Ornate Stand Base -->
+                    <path d="M45 105 C45 105 52 95 60 95 C68 95 75 105 75 105 L82 115 H38 Z" fill="#b8860b" stroke="#e5a93c" stroke-width="2"/>
+                    <path d="M35 115 H85 V120 H35 Z" fill="#8b6508" stroke="#e5a93c" stroke-width="1.5"/>
+                    
+                    <!-- Crystal Sphere Background -->
+                    <circle cx="60" cy="55" r="42" fill="radial-gradient(circle, #3b1b66 0%, #07050d 80%)" stroke="#e5a93c" stroke-width="3"/>
+                    <circle cx="60" cy="55" r="40" fill="#140a24"/>
+
+                    <!-- Tiny Floating Comedy Faces / Masks inside the Orb -->
+                    <circle cx="42" cy="38" r="4" fill="#ffd700" opacity="0.8"/>
+                    <circle cx="78" cy="38" r="4" fill="#ffd700" opacity="0.8"/>
+                    <circle cx="38" cy="68" r="4" fill="#ffd700" opacity="0.8"/>
+                    <circle cx="82" cy="68" r="4" fill="#ffd700" opacity="0.8"/>
+
+                    <!-- Central All-Seeing Eye -->
+                    <path d="M35 55 C45 40 75 40 85 55 C75 70 45 70 35 55 Z" fill="#ffffff" stroke="#e5a93c" stroke-width="2"/>
+                    <circle cx="60" cy="55" r="11" fill="#4a148c" stroke="#f7d287" stroke-width="1.5"/>
+                    <circle cx="60" cy="55" r="5" fill="#000000"/>
+                    <circle cx="58" cy="53" r="2" fill="#ffffff"/>
+
+                    <!-- Eyelid Overlay for Hover Blink -->
+                    <path class="eyelid" d="M35 55 C45 40 75 40 85 55 C75 70 45 70 35 55 Z" fill="#140a24" stroke="#e5a93c" stroke-width="2"/>
                 </svg>
             </div>
             <h1 class="main-title">Seyoncé</h1>
@@ -432,7 +440,7 @@
             <p class="tagline">Channeling punchlines, spectral wit, and unscripted mayhem from the great beyond.</p>
         </header>
 
-        <!-- Featured Show Section -->
+        <!-- Featured Event -->
         <section class="tarot-card event-feature">
             <span class="event-badge">🔮 Featured Summoning</span>
             <h2 class="card-title" style="color: var(--gold-light);">Seyoncé & Special Guests</h2>
@@ -450,7 +458,7 @@
                 Join us for an evening of live unscripted comedy, craft brews, and spirits of every variety.
             </p>
             <div class="btn-group">
-                <a href="https://www.eventbrite.com/e/mischief-night-at-bolero-snort-brewing-with-seyonce-improv-comedy-tickets-2003512339340?aff=oddtdtcreator" target="_blank" class="btn">Get Tickets on Eventbrite</a>
+                <a href="https://www.eventbrite.com/e/mischief-night-at-bolero-snort-brewing-with-seyonce-improv-comedy-tickets-2003512339340?aff=oddtdtcreator" target="_blank" rel="noopener noreferrer" class="btn">Get Tickets on Eventbrite</a>
             </div>
         </section>
 
@@ -459,27 +467,26 @@
             <h2 class="card-title">Who We Are</h2>
             <p>We are your premier comedic mediums, conjuring razor-sharp wit and unscripted brilliance out of thin air. Whether channeling historical specters or creating absurd theatrical magic on the fly, Seyoncé guarantees an evening of high-wire comedy where no two shows are ever identical.</p>
             <div class="btn-group">
-                <a href="https://www.facebook.com/profile.php?id=61583459100000" target="_blank" class="btn btn-secondary">Facebook Page</a>
-                <a href="https://www.youtube.com/@Seyonc%C3%A9ImprovComedy" target="_blank" class="btn btn-secondary">YouTube Channel</a>
+                <a href="https://www.facebook.com/profile.php?id=61583459100000" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Facebook Page</a>
+                <a href="https://www.youtube.com/@Seyonc%C3%A9ImprovComedy" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">YouTube Channel</a>
             </div>
         </section>
 
-        <!-- YouTube Sketch Embed -->
+        <!-- YouTube Video -->
         <section class="tarot-card">
             <h2 class="card-title">Watch the Spirits at Work</h2>
-            <p style="text-align: center; color: var(--text-muted);">FULL SHOW - Seyoncé Improv Comedy at Just Jakes (Sept 4, 2026):</p>
+            <p style="text-align: center; color: var(--text-muted);">FULL SHOW - Seyoncé Improv Comedy at Just Jakes:</p>
             <div class="video-container">
                 <iframe 
                     src="https://www.youtube.com/embed/loOxpFBRkts?start=45" 
                     title="FULL SHOW - Seyoncé Improv Comedy at Just Jakes" 
-                    frameborder="0" 
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                     allowfullscreen>
                 </iframe>
             </div>
         </section>
 
-        <!-- Photo Gallery -->
+        <!-- Gallery -->
         <section class="tarot-card">
             <h2 class="card-title">Spectral Moments</h2>
             <div class="gallery-grid">
@@ -495,7 +502,7 @@
             </div>
         </section>
 
-        <!-- Interactive Improv Oracle Widget -->
+        <!-- Interactive Oracle -->
         <section class="tarot-card oracle-box">
             <h2 class="card-title">The Digital Oracle</h2>
             <p>Need a scene suggestion right now? Consult the crystal ball:</p>
@@ -504,12 +511,13 @@
         </section>
     </div>
 
+    <!-- Footer -->
     <footer>
         <p>☽ ☉ ☾</p>
         <div class="footer-links">
-            <a href="https://www.facebook.com/profile.php?id=61583459100000" target="_blank" class="footer-link">Facebook</a>
+            <a href="https://www.facebook.com/profile.php?id=61583459100000" target="_blank" rel="noopener noreferrer" class="footer-link">Facebook</a>
             <span>•</span>
-            <a href="https://www.youtube.com/@Seyonc%C3%A9ImprovComedy" target="_blank" class="footer-link">YouTube</a>
+            <a href="https://www.youtube.com/@Seyonc%C3%A9ImprovComedy" target="_blank" rel="noopener noreferrer" class="footer-link">YouTube</a>
         </div>
         <p>&copy; 2026 Seyoncé Improv Comedy. All spirits reserved.</p>
     </footer>
