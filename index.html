@@ -3,301 +3,475 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Seyoncé Improv Comedy | Summoning Laughs from the Beyond</title>
-    <!-- Fonts & Icons -->
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800;900&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'midnight': '#0a0814',
-                        'card-bg': '#140f26',
-                        'psychic-purple': '#7b2cbf',
-                        'spectral-teal': '#00f2fe',
-                        'neon-pink': '#ff007f',
-                        'glow-purple': '#3c096c'
-                    },
-                    fontFamily: {
-                        serif: ['Cinzel', 'serif'],
-                        sans: ['Inter', 'sans-serif'],
-                    }
-                }
-            }
-        }
-    </script>
+    <title>Seyoncé Improv Comedy | Mischief Night Seance</title>
+    <!-- Vintage & Celestial Typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Playfair+Display:ital,wght@0,600;0,800;1,400&family=Metamorphous&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --bg-dark: #07050d;
+            --bg-card: rgba(18, 13, 31, 0.85);
+            --gold-primary: #e5a93c;
+            --gold-light: #f7d287;
+            --gold-dark: #a8731d;
+            --candle-amber: #ff9e2c;
+            --mystic-purple: #2a1b40;
+            --cosmic-glow: rgba(157, 78, 221, 0.35);
+            --text-main: #f0e6d2;
+            --text-muted: #c9bc9c;
+            --border-gold: 2px solid #e5a93c;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
         body {
-            background-color: #0a0814;
-            color: #f8f9fa;
-            font-family: 'Inter', sans-serif;
-            overflow-x: hidden;
+            background-color: var(--bg-dark);
+            background-image: 
+                radial-gradient(circle at 50% 20%, rgba(74, 20, 140, 0.4) 0%, transparent 60%),
+                radial-gradient(circle at 20% 80%, rgba(255, 158, 44, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 80% 80%, rgba(123, 44, 191, 0.2) 0%, transparent 40%);
+            color: var(--text-main);
+            font-family: 'Playfair Display', serif;
+            min-height: 100vh;
+            line-height: 1.6;
+            padding: 1rem;
+            position: relative;
         }
 
-        /* Glowing text effects */
-        .glow-title {
-            text-shadow: 0 0 15px rgba(123, 44, 191, 0.8), 0 0 30px rgba(0, 242, 254, 0.4);
+        /* Celestial / Tarot Decorative Frame Overlay */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            right: 10px;
+            bottom: 10px;
+            border: 1px solid rgba(229, 169, 60, 0.4);
+            outline: 2px solid rgba(229, 169, 60, 0.2);
+            outline-offset: 4px;
+            pointer-events: none;
+            z-index: 999;
         }
 
-        .glow-box {
-            box-shadow: 0 0 25px rgba(123, 44, 191, 0.25);
+        .corner-star {
+            position: fixed;
+            color: var(--gold-primary);
+            font-size: 1.2rem;
+            pointer-events: none;
+            z-index: 1000;
+        }
+        .top-left { top: 15px; left: 15px; }
+        .top-right { top: 15px; right: 15px; }
+        .bottom-left { bottom: 15px; left: 15px; }
+        .bottom-right { bottom: 15px; right: 15px; }
+
+        .container {
+            max-width: 950px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+            position: relative;
+            z-index: 10;
         }
 
-        .glow-box:hover {
-            box-shadow: 0 0 35px rgba(0, 242, 254, 0.4);
+        /* Header / Logo Styling matching Flyer */
+        header {
+            text-align: center;
+            padding: 3rem 1rem 2rem;
+            position: relative;
         }
 
-        /* Polaroid card effect */
-        .polaroid {
-            background: #1e1938;
-            padding: 12px 12px 20px 12px;
+        /* Flyer Eye Icon Container */
+        .flyer-logo-icon {
+            width: 110px;
+            height: 110px;
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: radial-gradient(circle, rgba(157, 78, 221, 0.6) 0%, rgba(20, 10, 35, 0.9) 70%);
+            border: 3px solid var(--gold-primary);
+            border-radius: 50%;
+            box-shadow: 0 0 25px rgba(157, 78, 221, 0.8), inset 0 0 15px rgba(255, 158, 44, 0.5);
+            animation: pulse-glow 3s infinite alternate;
+        }
+
+        .flyer-logo-icon svg {
+            width: 75px;
+            height: 75px;
+        }
+
+        @keyframes pulse-glow {
+            0% { transform: scale(1); box-shadow: 0 0 20px rgba(157, 78, 221, 0.8); }
+            100% { transform: scale(1.05); box-shadow: 0 0 35px rgba(255, 158, 44, 0.9); }
+        }
+
+        h1.main-title {
+            font-family: 'Cinzel Decorative', cursive;
+            font-size: clamp(2.8rem, 8vw, 5rem);
+            font-weight: 900;
+            color: var(--gold-primary);
+            background: linear-gradient(180deg, #ffe094 0%, #e5a93c 50%, #8c580d 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 20px rgba(229, 169, 60, 0.4);
+            letter-spacing: 3px;
+            line-height: 1.1;
+            margin-bottom: 0.2rem;
+        }
+
+        .subtitle-banner {
+            font-family: 'Metamorphous', cursive;
+            font-size: clamp(1rem, 3.5vw, 1.8rem);
+            color: var(--gold-light);
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            border-top: 1px solid var(--gold-primary);
+            border-bottom: 1px solid var(--gold-primary);
+            display: inline-block;
+            padding: 0.2rem 2rem;
+            margin-top: 0.5rem;
+            margin-bottom: 1.5rem;
+            background: rgba(10, 7, 20, 0.6);
+        }
+
+        .tagline {
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            font-style: italic;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Ornate Card Component */
+        .tarot-card {
+            background: var(--bg-card);
+            border: 2px solid var(--gold-primary);
+            box-shadow: 
+                0 0 15px rgba(0, 0, 0, 0.8),
+                inset 0 0 15px rgba(229, 169, 60, 0.15);
             border-radius: 8px;
-            border: 1px solid rgba(123, 44, 191, 0.3);
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            padding: 2.5rem;
+            margin-bottom: 2.5rem;
+            position: relative;
+            backdrop-filter: blur(5px);
         }
 
-        .polaroid:hover {
-            transform: scale(1.04) rotate(1deg);
-            border-color: #00f2fe;
-            box-shadow: 0 10px 25px rgba(255, 0, 127, 0.3);
+        /* Inner Corner Accents for Cards */
+        .tarot-card::after {
+            content: "👁";
+            position: absolute;
+            top: 8px;
+            right: 12px;
+            font-size: 0.9rem;
+            color: var(--gold-primary);
+            opacity: 0.6;
         }
 
-        /* Custom scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
+        h2.card-title {
+            font-family: 'Cinzel Decorative', cursive;
+            color: var(--gold-primary);
+            font-size: clamp(1.5rem, 4vw, 2.2rem);
+            margin-bottom: 1.2rem;
+            text-align: center;
+            border-bottom: 1px dashed rgba(229, 169, 60, 0.3);
+            padding-bottom: 0.8rem;
         }
-        ::-webkit-scrollbar-track {
-            background: #0a0814;
+
+        p {
+            color: var(--text-main);
+            font-size: 1.1rem;
+            margin-bottom: 1.2rem;
         }
-        ::-webkit-scrollbar-thumb {
-            background: #7b2cbf;
+
+        /* Mischief Night Flyer Event Highlight */
+        .event-feature {
+            background: linear-gradient(135deg, rgba(42, 27, 64, 0.9), rgba(15, 10, 26, 0.95));
+            border: 2px solid var(--candle-amber);
+            box-shadow: 0 0 20px rgba(255, 158, 44, 0.25);
+            text-align: center;
+        }
+
+        .event-badge {
+            background: var(--candle-amber);
+            color: #000;
+            font-family: 'Metamorphous', cursive;
+            font-weight: bold;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            padding: 0.3rem 1rem;
+            display: inline-block;
+            border-radius: 3px;
+            margin-bottom: 1rem;
+        }
+
+        .event-details {
+            font-family: 'Metamorphous', cursive;
+            font-size: 1.25rem;
+            color: var(--gold-light);
+            margin: 1rem 0;
+            line-height: 1.8;
+        }
+
+        .event-location {
+            color: var(--text-muted);
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Buttons matching Vintage Aesthetic */
+        .btn-group {
+            display: flex;
+            gap: 1.2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+        }
+
+        .btn {
+            background: linear-gradient(180deg, #f7d287 0%, #e5a93c 50%, #9e6911 100%);
+            color: #0a0714;
+            font-family: 'Metamorphous', cursive;
+            font-weight: bold;
+            padding: 0.9rem 2rem;
             border-radius: 4px;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 15px rgba(229, 169, 60, 0.4);
+            transition: all 0.3s ease;
+            border: 1px solid #ffe094;
+            display: inline-block;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 158, 44, 0.7);
+            background: linear-gradient(180deg, #ffe094 0%, #ff9e2c 100%);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--gold-primary);
+            border: 1px solid var(--gold-primary);
+            box-shadow: none;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(229, 169, 60, 0.15);
+            color: var(--gold-light);
+            box-shadow: 0 0 12px rgba(229, 169, 60, 0.3);
+        }
+
+        /* Video Embed Frame */
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border: 1px solid var(--gold-primary);
+            border-radius: 6px;
+            margin: 1.5rem 0;
+            box-shadow: 0 0 15px rgba(0,0,0,0.8);
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Photo Gallery Grid */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.2rem;
+            margin-top: 1.5rem;
+        }
+
+        .gallery-item {
+            border: 1px solid var(--gold-primary);
+            background: #000;
+            border-radius: 4px;
+            overflow: hidden;
+            height: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.6);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.03);
+            border-color: var(--candle-amber);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Improv Oracle Crystal Ball Widget */
+        .oracle-box {
+            text-align: center;
+            background: radial-gradient(circle at center, rgba(42, 27, 64, 0.9) 0%, rgba(10, 7, 20, 0.95) 100%);
+            border: 2px solid var(--gold-primary);
+        }
+
+        #prompt-output {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.35rem;
+            font-style: italic;
+            color: var(--gold-light);
+            min-height: 4.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 1.5rem 0;
+            padding: 1rem;
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 6px;
+            border: 1px inset rgba(229, 169, 60, 0.3);
+        }
+
+        footer {
+            text-align: center;
+            padding: 2.5rem 1rem;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            font-family: 'Inter', sans-serif;
+            border-top: 1px solid rgba(229, 169, 60, 0.2);
+            margin-top: 3rem;
         }
     </style>
 </head>
-<body class="min-h-screen flex flex-col justify-between selection:bg-neon-pink selection:text-white">
+<body>
 
-    <!-- Ambient background effect -->
-    <div class="fixed inset-0 pointer-events-none opacity-20 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-psychic-purple via-midnight to-midnight z-0"></div>
+    <!-- Celestial Outer Frame Stars -->
+    <div class="corner-star top-left">✦</div>
+    <div class="corner-star top-right">✦</div>
+    <div class="corner-star bottom-left">✦</div>
+    <div class="corner-star bottom-right">✦</div>
 
-    <div class="relative z-10">
-        <!-- Navigation Header -->
-        <header class="py-10 px-4 text-center border-b border-purple-900/40 bg-gradient-to-b from-purple-950/30 to-transparent">
-            <div class="max-w-4xl mx-auto">
-                <span class="inline-block text-xs uppercase tracking-[0.3em] text-spectral-teal font-bold mb-2 py-1 px-3 rounded-full border border-spectral-teal/30 bg-spectral-teal/10">
-                    ✨ Unscripted Psychic Comedy ✨
-                </span>
-                <h1 class="font-serif font-black text-4xl sm:text-6xl md:text-7xl tracking-wide glow-title my-3 text-white">
-                    Seyoncé <span class="text-transparent bg-clip-text bg-gradient-to-r from-spectral-teal to-neon-pink">Improv</span>
-                </h1>
-                <p class="text-lg sm:text-xl text-purple-200/80 font-light italic max-w-xl mx-auto">
-                    Channeling punchlines, spirits, and spontaneous chaos from the beyond.
-                </p>
-                <div class="mt-6 flex justify-center gap-4">
-                    <a href="#show-tickets" class="bg-gradient-to-r from-neon-pink to-psychic-purple text-white font-bold py-3 px-6 rounded-full hover:opacity-90 transition-all shadow-lg shadow-neon-pink/30 hover:scale-105">
-                        🔮 Next Show Tickets
-                    </a>
-                    <a href="#oracle" class="border border-spectral-teal text-spectral-teal font-bold py-3 px-6 rounded-full hover:bg-spectral-teal hover:text-midnight transition-all hover:scale-105">
-                        👻 Ask The Oracle
-                    </a>
-                </div>
+    <div class="container">
+        <!-- Header Section -->
+        <header>
+            <!-- All-Seeing Crystal Ball Icon matching the Flyer -->
+            <div class="flyer-logo-icon">
+                <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M50 15 C20 15 5 50 5 50 C5 50 20 85 50 85 C80 85 95 50 95 50 C95 50 80 15 50 15 Z" stroke="#e5a93c" stroke-width="4" fill="rgba(42,27,64,0.7)"/>
+                    <circle cx="50" cy="50" r="22" stroke="#f7d287" stroke-width="3" fill="#07050d"/>
+                    <circle cx="50" cy="50" r="10" fill="#9d4edd"/>
+                    <circle cx="47" cy="47" r="4" fill="#ffffff"/>
+                    <path d="M15 50 Q50 25 85 50" stroke="#ff9e2c" stroke-width="2" fill="none" opacity="0.6"/>
+                    <path d="M15 50 Q50 75 85 50" stroke="#ff9e2c" stroke-width="2" fill="none" opacity="0.6"/>
+                </svg>
             </div>
+            <h1 class="main-title">Seyoncé</h1>
+            <div class="subtitle-banner">Improv Comedy</div>
+            <p class="tagline">Channeling punchlines, spectral wit, and unscripted mayhem from the great beyond.</p>
         </header>
 
-        <main class="max-w-5xl mx-auto px-4 py-10 space-y-16">
-
-            <!-- Featured Event Section -->
-            <section id="show-tickets" class="scroll-mt-8">
-                <div class="bg-card-bg border border-neon-pink/40 rounded-2xl p-6 sm:p-10 glow-box relative overflow-hidden">
-                    <div class="absolute -top-12 -right-12 w-40 h-40 bg-neon-pink/10 rounded-full blur-2xl"></div>
-                    
-                    <div class="flex flex-col md:flex-row items-center justify-between gap-8 relative z-10">
-                        <div class="space-y-4 text-center md:text-left flex-1">
-                            <span class="bg-neon-pink text-white text-xs font-black uppercase px-3 py-1 rounded-md tracking-wider">
-                                Featured Live Event
-                            </span>
-                            <h2 class="font-serif text-3xl sm:text-4xl text-white font-extrabold">
-                                Seyoncé & Special Guests:<br><span class="text-spectral-teal">Mischief Night Showcase</span>
-                            </h2>
-                            <div class="space-y-2 text-purple-200">
-                                <p class="flex items-center justify-center md:justify-start gap-2">
-                                    <span>🗓️</span> <strong>Friday, October 30th</strong>
-                                </p>
-                                <p class="flex items-center justify-center md:justify-start gap-2">
-                                    <span>📍</span> <strong>Bolero Snort Brewery</strong> (Carlstadt, NJ)
-                                </p>
-                                <p class="text-sm text-gray-300 pt-2 leading-relaxed">
-                                    Join us for a séance-themed night of unscripted mayhem, artisanal brews, and spirits of every variety! Expect full hilarity, spontaneous spectral appearances, and zero script.
-                                </p>
-                            </div>
-                        </div>
-
-                        <div class="w-full md:w-auto flex flex-col items-center justify-center bg-midnight/60 p-6 rounded-xl border border-purple-800/50">
-                            <span class="text-xs text-purple-300 mb-2 uppercase tracking-widest font-semibold">Limited Seating</span>
-                            <a href="https://www.eventbrite.com/e/mischief-night-at-bolero-snort-brewing-with-seyonce-improv-comedy-tickets-2003512339340?aff=oddtdtcreator" 
-                               target="_blank" 
-                               rel="noopener noreferrer" 
-                               class="w-full sm:w-auto text-center bg-gradient-to-r from-neon-pink to-psychic-purple hover:from-psychic-purple hover:to-neon-pink text-white font-black text-lg py-4 px-8 rounded-xl shadow-xl transition-all transform hover:scale-105 active:scale-95">
-                                🎟️ Get Tickets Now
-                            </a>
-                            <span class="text-xs text-gray-400 mt-3 text-center">Direct link via Eventbrite</span>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- YouTube Embedded Section -->
-            <section class="space-y-6">
-                <div class="text-center">
-                    <h2 class="font-serif text-3xl font-bold text-white mb-2">Watch The Madness</h2>
-                    <p class="text-purple-300 text-sm">Catch our latest videos and channel highlights below!</p>
-                </div>
-                
-                <div class="bg-card-bg border border-purple-900/60 rounded-2xl p-4 sm:p-6 glow-box">
-                    <div class="aspect-video w-full rounded-xl overflow-hidden bg-black shadow-2xl relative border border-purple-800/40">
-                        <iframe 
-                            class="w-full h-full"
-                            src="https://www.youtube.com/embed?listType=playlist&list=UU" 
-                            title="Seyoncé Improv Comedy YouTube Channel" 
-                            frameborder="0" 
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                            allowfullscreen
-                            onerror="this.style.display='none'; document.getElementById('yt-fallback').style.display='flex';"
-                        ></iframe>
-                        <!-- Fallback container if iframe loading restricts list embeds -->
-                        <div id="yt-fallback" class="hidden absolute inset-0 flex-col items-center justify-center p-6 bg-gradient-to-br from-purple-950 to-midnight text-center">
-                            <div class="text-5xl mb-4">📺</div>
-                            <h3 class="font-serif text-2xl text-white font-bold mb-2">Seyoncé Comedy Vault</h3>
-                            <p class="text-purple-200 max-w-md mb-6">Explore our official clips, sketches, and full live performances on YouTube!</p>
-                            <a href="https://www.youtube.com/@Seyonc%C3%A9ImprovComedy" target="_blank" rel="noopener noreferrer" class="bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-6 rounded-full transition-all">
-                                Visit YouTube Channel
-                            </a>
-                        </div>
-                    </div>
-                    <div class="mt-4 flex justify-between items-center px-2">
-                        <span class="text-xs text-purple-300">Subscribe for weekly comedy drops</span>
-                        <a href="https://www.youtube.com/@Seyonc%C3%A9ImprovComedy" target="_blank" rel="noopener noreferrer" class="text-spectral-teal hover:underline text-xs font-semibold">
-                            Open in YouTube ↗
-                        </a>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Photo Gallery Section -->
-            <section class="space-y-6">
-                <div class="text-center">
-                    <h2 class="font-serif text-3xl font-bold text-white mb-2">Spectral Snapshots</h2>
-                    <p class="text-purple-300 text-sm">Polaroid evidence from our onstage hauntings & backstage chaos.</p>
-                </div>
-
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <!-- Polaroid 1 -->
-                    <div class="polaroid">
-                        <div class="aspect-square bg-purple-950/80 rounded flex items-center justify-center overflow-hidden border border-purple-800/40 relative group">
-                            <img src="https://placehold.co/600x600/2D1B4E/00F2FE?text=Live+at+Bolero+Snort" alt="Seyoncé Live Show" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                            <div class="absolute inset-0 bg-gradient-to-t from-midnight/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-3">
-                                <span class="text-xs text-spectral-teal">✨ Oct 2026 Showcase</span>
-                            </div>
-                        </div>
-                        <p class="font-serif text-center text-sm text-purple-200 mt-3 italic">
-                            "When the suggestion is 'exorcism at a laundromat'..."
-                        </p>
-                    </div>
-
-                    <!-- Polaroid 2 -->
-                    <div class="polaroid">
-                        <div class="aspect-square bg-purple-950/80 rounded flex items-center justify-center overflow-hidden border border-purple-800/40 relative group">
-                            <img src="https://placehold.co/600x600/151124/FF007F?text=Backstage+Seance" alt="Backstage Antics" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                            <div class="absolute inset-0 bg-gradient-to-t from-midnight/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-3">
-                                <span class="text-xs text-neon-pink">👻 Pre-Show Ritual</span>
-                            </div>
-                        </div>
-                        <p class="font-serif text-center text-sm text-purple-200 mt-3 italic">
-                            Summoning punchlines in the green room.
-                        </p>
-                    </div>
-
-                    <!-- Polaroid 3 -->
-                    <div class="polaroid sm:col-span-2 lg:col-span-1">
-                        <div class="aspect-square bg-purple-950/80 rounded flex items-center justify-center overflow-hidden border border-purple-800/40 relative group">
-                            <img src="https://placehold.co/600x600/3C096C/00F2FE?text=Audience+Ghost+Hunting" alt="Audience Participation" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                            <div class="absolute inset-0 bg-gradient-to-t from-midnight/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-3">
-                                <span class="text-xs text-spectral-teal">🔮 Unscripted Magic</span>
-                            </div>
-                        </div>
-                        <p class="font-serif text-center text-sm text-purple-200 mt-3 italic">
-                            Finding the funniest spirit in row 3!
-                        </p>
-                    </div>
-                </div>
-            </section>
-
-            <!-- The Improv Oracle Widget Section -->
-            <section id="oracle" class="scroll-mt-8">
-                <div class="bg-gradient-to-br from-card-bg via-purple-950/50 to-midnight border border-spectral-teal/40 rounded-2xl p-8 text-center glow-box space-y-6">
-                    <span class="text-3xl">🔮</span>
-                    <h2 class="font-serif text-3xl font-bold text-white">The Improv Oracle</h2>
-                    <p class="text-purple-200 text-sm max-w-lg mx-auto">
-                        Need an instant scene prompt for practice, inspiration, or sheer spectral entertainment? Consult the mystic orb below:
-                    </p>
-
-                    <div class="bg-midnight/80 border border-purple-800/60 rounded-xl p-6 min-h-[120px] flex items-center justify-center my-4 max-w-2xl mx-auto shadow-inner">
-                        <p id="prompt-output" class="text-lg sm:text-xl font-medium text-spectral-teal italic leading-relaxed">
-                            "Two victorian ghosts arguing over who forgot to pay the Wi-Fi bill in the afterlife."
-                        </p>
-                    </div>
-
-                    <button onclick="generatePrompt()" class="bg-gradient-to-r from-spectral-teal to-psychic-purple hover:from-psychic-purple hover:to-spectral-teal text-white font-bold py-3 px-8 rounded-full shadow-lg transition-all transform hover:scale-105 active:scale-95">
-                        ✨ Summon Another Prompt
-                    </button>
-                </div>
-            </section>
-
-        </main>
-
-        <!-- Social Links Footer -->
-        <footer class="mt-20 border-t border-purple-900/40 bg-midnight/90 py-10 px-4 text-center text-purple-300">
-            <div class="max-w-4xl mx-auto space-y-6">
-                <h3 class="font-serif text-xl text-white font-bold">Connect with Seyoncé Improv Comedy</h3>
-                <div class="flex justify-center gap-6 text-2xl">
-                    <a href="https://www.facebook.com/profile.php?id=61583459100000" target="_blank" rel="noopener noreferrer" class="hover:text-neon-pink transition-colors" title="Facebook">
-                        📘 Facebook
-                    </a>
-                    <a href="https://www.youtube.com/@Seyonc%C3%A9ImprovComedy" target="_blank" rel="noopener noreferrer" class="hover:text-neon-pink transition-colors" title="YouTube">
-                        📺 YouTube
-                    </a>
-                </div>
-                <p class="text-xs text-gray-500 pt-4">
-                    &copy; 2026 Seyoncé Improv Comedy. All spirits reserved. Hosted with love on GitHub Pages.
-                </p>
+        <!-- Featured Show Section (Matching Flyer) -->
+        <section class="tarot-card event-feature">
+            <span class="event-badge">🔮 Featured Summoning</span>
+            <h2 class="card-title" style="color: var(--gold-light);">Seyoncé & Special Guests</h2>
+            <div class="event-details">
+                MISCHIEF NIGHT SEANCE!
             </div>
-        </footer>
+            <p style="font-size: 1.2rem; color: var(--text-main);">
+                <strong>Friday, October 30th at 8:00 PM</strong>
+            </p>
+            <div class="event-location">
+                📍 <strong>Bolero Snort Brewery</strong><br>
+                316 20th St, Carlstadt, NJ 07072
+            </div>
+            <p style="font-style: italic; color: var(--text-muted);">
+                Join us for an evening of live unscripted comedy, craft brews, and spirits of every variety.
+            </p>
+            <div class="btn-group">
+                <a href="https://www.eventbrite.com/e/mischief-night-at-bolero-snort-brewing-with-seyonce-improv-comedy-tickets-2003512339340?aff=oddtdtcreator" target="_blank" class="btn">Get Tickets on Eventbrite</a>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="tarot-card">
+            <h2 class="card-title">Who We Are</h2>
+            <p>We are your premier comedic mediums, conjuring razor-sharp wit and unscripted brilliance out of thin air. Whether channeling historical specters or creating absurd theatrical magic on the fly, Seyoncé guarantees an evening of high-wire comedy where no two shows are ever identical.</p>
+            <div class="btn-group">
+                <a href="https://www.facebook.com/profile.php?id=61583459100000" target="_blank" class="btn btn-secondary">Facebook Page</a>
+                <a href="https://www.youtube.com/@Seyonc%C3%A9ImprovComedy" target="_blank" class="btn btn-secondary">YouTube Channel</a>
+            </div>
+        </section>
+
+        <!-- YouTube Sketch Embed -->
+        <section class="tarot-card">
+            <h2 class="card-title">Watch the Spirits at Work</h2>
+            <p style="text-align: center; color: var(--text-muted);">A sneak peek at our unscripted manifestations:</p>
+            <div class="video-container">
+                <iframe 
+                    src="https://www.youtube.com/embed/Kb3RfBepp8g" 
+                    title="Seyoncé Improv Comedy Commercial" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+        </section>
+
+        <!-- Photo Gallery -->
+        <section class="tarot-card">
+            <h2 class="card-title">Spectral Moments</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=600&q=80" alt="Stage lights and comedy atmosphere">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=600&q=80" alt="Microphone on stage">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=600&q=80" alt="Seance and mysterious mood">
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Improv Oracle Widget -->
+        <section class="tarot-card oracle-box">
+            <h2 class="card-title">The Digital Oracle</h2>
+            <p>Need a scene suggestion right now? Consult the crystal ball:</p>
+            <div id="prompt-output">"Two rival ghosts fighting over the last artisanal avocado toast in the afterlife."</div>
+            <button class="btn" onclick="generatePrompt()">Summon New Prompt</button>
+        </section>
     </div>
 
-    <!-- Interactive Logic Script -->
+    <footer>
+        <p>☽ ☉ ☾</p>
+        <p>&copy; 2026 Seyoncé Improv Comedy. All spirits reserved.</p>
+    </footer>
+
     <script>
         const prompts = [
-            "Two Victorian ghosts arguing over who forgot to pay the Wi-Fi bill in the afterlife.",
-            "A werewolf trying to politely decline a moonlight charcuterie board because of dietary restrictions.",
-            "A psychic who only gets visions of mundane things like when the laundry cycle will finish.",
-            "Dracula trying to explain to his landlord why he can't have sunlight in the apartment.",
-            "An medieval alchemist trying to return a broken potion at a modern Customer Service desk.",
-            "Two ghosts competing in a high-stakes baking show where none of the ingredients can be touched.",
-            "A fortune teller whose crystal ball accidentally streams cable news 24/7.",
-            "A time traveler trying to pay for coffee with 18th-century pirate dubloons."
+            "A support group for vampires who are terribly lactose intolerant.",
+            "Trying to return a cursed haunted antique at a garage sale without offending the ghoul.",
+            "A Shakespearean actor accidentally cast in a high-stakes corporate quarterly review.",
+            "Couples therapy between Dr. Frankenstein and his monster.",
+            "An alien civilization whose only contact with Earth is old episodes of home renovation shows.",
+            "Explaining modern Wi-Fi passwords to a Victorian ghost trapped in the router.",
+            "A fortune teller who can only see really mundane things 5 seconds into the future."
         ];
 
         function generatePrompt() {
-            const output = document.getElementById('prompt-output');
-            output.style.opacity = '0';
-            
-            setTimeout(() => {
-                const randomIndex = Math.floor(Math.random() * prompts.length);
-                output.textContent = `"${prompts[randomIndex]}"`;
-                output.style.opacity = '1';
-            }, 200);
+            const randomIndex = Math.floor(Math.random() * prompts.length);
+            document.getElementById('prompt-output').textContent = `"${prompts[randomIndex]}"`;
         }
     </script>
 </body>
