@@ -34,7 +34,7 @@
         body {
             background-color: var(--bg-dark);
             background-image: 
-                radial-gradient(circle at 50% 20%, rgba(74, 20, 140, 0.4) 0%, transparent 60%),
+                radial-gradient(circle at 50% 20%, rgba(74, 20, 140, 0.45) 0%, transparent 65%),
                 radial-gradient(circle at 20% 80%, rgba(255, 158, 44, 0.15) 0%, transparent 40%),
                 radial-gradient(circle at 80% 80%, rgba(123, 44, 191, 0.2) 0%, transparent 40%);
             color: var(--text-main);
@@ -75,7 +75,7 @@
         .container {
             max-width: 950px;
             margin: 0 auto;
-            padding: 2rem 1rem;
+            padding: 1.5rem 1rem;
             position: relative;
             z-index: 10;
         }
@@ -83,31 +83,22 @@
         /* Header / Logo Styling */
         header {
             text-align: center;
-            padding: 3rem 1rem 2rem;
+            padding: 2rem 1rem 1.5rem;
             position: relative;
         }
 
-        /* Flyer Crystal Ball Logo Container with Floating & Blinking */
-        .flyer-logo-icon {
-            width: 140px;
-            height: 140px;
-            margin: 0 auto 1.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            filter: drop-shadow(0 0 20px rgba(157, 78, 221, 0.8));
-            animation: float-eerie 4s ease-in-out infinite;
-            transition: transform 0.4s ease;
+        .flyer-header-graphic {
+            width: 100%;
+            max-width: 780px;
+            margin: 0 auto;
+            display: block;
+            filter: drop-shadow(0 0 25px rgba(229, 169, 60, 0.4));
+        }
+
+        .crystal-ball-interactive {
             cursor: pointer;
         }
 
-        .flyer-logo-icon svg {
-            width: 140px;
-            height: 140px;
-            display: block;
-        }
-
-        /* Eyelid Blink Animation on Hover */
         .eyelid {
             transform-box: fill-box;
             transform-origin: center;
@@ -115,17 +106,7 @@
             transition: transform 0.15s ease-in-out;
         }
 
-        @keyframes float-eerie {
-            0% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-10px) rotate(1deg); }
-            100% { transform: translateY(0px) rotate(0deg); }
-        }
-
-        .flyer-logo-icon:hover {
-            transform: scale(1.08) translateY(-5px);
-        }
-
-        .flyer-logo-icon:hover .eyelid {
+        .crystal-ball-interactive:hover .eyelid {
             animation: blink-eye 0.4s ease-in-out infinite;
         }
 
@@ -134,41 +115,12 @@
             50% { transform: scaleY(1); }
         }
 
-        h1.main-title {
-            font-family: 'Cinzel Decorative', cursive;
-            font-size: clamp(2.8rem, 8vw, 5rem);
-            font-weight: 900;
-            color: var(--gold-primary);
-            background: linear-gradient(180deg, #ffe094 0%, #e5a93c 50%, #8c580d 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 20px rgba(229, 169, 60, 0.4);
-            letter-spacing: 3px;
-            line-height: 1.1;
-            margin-bottom: 0.2rem;
-        }
-
-        .subtitle-banner {
-            font-family: 'Metamorphous', cursive;
-            font-size: clamp(1rem, 3.5vw, 1.8rem);
-            color: var(--gold-light);
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            border-top: 1px solid var(--gold-primary);
-            border-bottom: 1px solid var(--gold-primary);
-            display: inline-block;
-            padding: 0.2rem 2rem;
-            margin-top: 0.5rem;
-            margin-bottom: 1.5rem;
-            background: rgba(10, 7, 20, 0.6);
-        }
-
         .tagline {
             font-size: 1.15rem;
             color: var(--text-muted);
             font-style: italic;
             max-width: 600px;
-            margin: 0 auto;
+            margin: 1rem auto 0;
         }
 
         /* Cards Layout */
@@ -310,25 +262,25 @@
             border: 0;
         }
 
-        /* Photo Gallery */
+        /* Custom Photo Gallery Grid */
         .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 1.2rem;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
             margin-top: 1.5rem;
         }
 
         .gallery-item {
-            border: 1px solid var(--gold-primary);
+            border: 2px solid var(--gold-primary);
             background: #000;
-            border-radius: 4px;
+            border-radius: 6px;
             overflow: hidden;
-            height: 180px;
+            height: 280px;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.6);
-            transition: transform 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.8);
+            transition: transform 0.3s ease, border-color 0.3s ease;
         }
 
         .gallery-item:hover {
@@ -340,6 +292,7 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+            object-position: center;
         }
 
         /* Improv Oracle Widget */
@@ -408,35 +361,79 @@
     <div class="container">
         <!-- Header -->
         <header>
-            <!-- Flyer-Accurate Crystal Ball & Eye Logo with Hover Blink -->
-            <div class="flyer-logo-icon" title="Hover to blink!">
-                <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <!-- Ornate Stand Base -->
-                    <path d="M45 105 C45 105 52 95 60 95 C68 95 75 105 75 105 L82 115 H38 Z" fill="#b8860b" stroke="#e5a93c" stroke-width="2"/>
-                    <path d="M35 115 H85 V120 H35 Z" fill="#8b6508" stroke="#e5a93c" stroke-width="1.5"/>
-                    
-                    <!-- Crystal Sphere Background -->
-                    <circle cx="60" cy="55" r="42" fill="radial-gradient(circle, #3b1b66 0%, #07050d 80%)" stroke="#e5a93c" stroke-width="3"/>
-                    <circle cx="60" cy="55" r="40" fill="#140a24"/>
+            <svg class="flyer-header-graphic" viewBox="0 0 800 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <linearGradient id="goldFontGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                        <stop offset="0%" stop-color="#fff1c4"/>
+                        <stop offset="35%" stop-color="#f5c15c"/>
+                        <stop offset="70%" stop-color="#d48c28"/>
+                        <stop offset="100%" stop-color="#693d05"/>
+                    </linearGradient>
+                    <linearGradient id="ribbonGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                        <stop offset="0%" stop-color="#fce8bd"/>
+                        <stop offset="50%" stop-color="#e0b263"/>
+                        <stop offset="100%" stop-color="#996e23"/>
+                    </linearGradient>
+                    <radialGradient id="orbGlowGrad" cx="50%" cy="50%" r="50%">
+                        <stop offset="0%" stop-color="#c084fc"/>
+                        <stop offset="55%" stop-color="#581c87"/>
+                        <stop offset="100%" stop-color="#1e0538"/>
+                    </radialGradient>
+                    <radialGradient id="eyeGlowGrad" cx="50%" cy="50%" r="50%">
+                        <stop offset="0%" stop-color="#38bdf8"/>
+                        <stop offset="70%" stop-color="#1e1b4b"/>
+                        <stop offset="100%" stop-color="#020617"/>
+                    </radialGradient>
+                </defs>
 
-                    <!-- Tiny Floating Comedy Faces / Masks inside the Orb -->
-                    <circle cx="42" cy="38" r="4" fill="#ffd700" opacity="0.8"/>
-                    <circle cx="78" cy="38" r="4" fill="#ffd700" opacity="0.8"/>
-                    <circle cx="38" cy="68" r="4" fill="#ffd700" opacity="0.8"/>
-                    <circle cx="82" cy="68" r="4" fill="#ffd700" opacity="0.8"/>
+                <text x="70" y="115" font-family="'Cinzel Decorative', cursive" font-size="88" font-weight="900" fill="url(#goldFontGrad)" stroke="#301b04" stroke-width="4" letter-spacing="2">SEY</text>
+                <text x="500" y="115" font-family="'Cinzel Decorative', cursive" font-size="88" font-weight="900" fill="url(#goldFontGrad)" stroke="#301b04" stroke-width="4" letter-spacing="2">NCÉ</text>
 
-                    <!-- Central All-Seeing Eye -->
-                    <path d="M35 55 C45 40 75 40 85 55 C75 70 45 70 35 55 Z" fill="#ffffff" stroke="#e5a93c" stroke-width="2"/>
-                    <circle cx="60" cy="55" r="11" fill="#4a148c" stroke="#f7d287" stroke-width="1.5"/>
-                    <circle cx="60" cy="55" r="5" fill="#000000"/>
-                    <circle cx="58" cy="53" r="2" fill="#ffffff"/>
+                <g class="crystal-ball-interactive">
+                    <g stroke="url(#goldFontGrad)" stroke-width="1.5" opacity="0.8">
+                        <line x1="400" y1="10" x2="400" y2="25"/>
+                        <line x1="400" y1="135" x2="400" y2="148"/>
+                        <line x1="338" y1="75" x2="352" y2="75"/>
+                        <line x1="448" y1="75" x2="462" y2="75"/>
+                        <line x1="356" y1="31" x2="366" y2="41"/>
+                        <line x1="444" y1="31" x2="434" y2="41"/>
+                        <line x1="356" y1="119" x2="366" y2="109"/>
+                        <line x1="444" y1="119" x2="434" y2="109"/>
+                    </g>
 
-                    <!-- Eyelid Overlay for Hover Blink -->
-                    <path class="eyelid" d="M35 55 C45 40 75 40 85 55 C75 70 45 70 35 55 Z" fill="#140a24" stroke="#e5a93c" stroke-width="2"/>
-                </svg>
-            </div>
-            <h1 class="main-title">Seyoncé</h1>
-            <div class="subtitle-banner">Improv Comedy</div>
+                    <path d="M370 120 Q400 108 430 120 L440 142 H360 Z" fill="url(#goldFontGrad)" stroke="#3a1e03" stroke-width="2"/>
+                    <path d="M362 132 Q400 122 438 132" stroke="#3a1e03" stroke-width="2" fill="none"/>
+
+                    <circle cx="400" cy="75" r="48" stroke="url(#goldFontGrad)" stroke-width="4" fill="none"/>
+                    <circle cx="400" cy="75" r="44" fill="url(#orbGlowGrad)" stroke="#e5a93c" stroke-width="1.5"/>
+
+                    <path d="M393 42 Q400 38 407 42" stroke="#fce8bd" stroke-width="1.2" fill="none"/>
+                    <path d="M394 46 Q400 51 406 46" stroke="#fce8bd" stroke-width="1.2" fill="none"/>
+
+                    <path d="M368 88 Q373 93 378 88" stroke="#fce8bd" stroke-width="1.2" fill="none"/>
+                    <circle cx="370" cy="84" r="1" fill="#fce8bd"/>
+                    <circle cx="376" cy="84" r="1" fill="#fce8bd"/>
+
+                    <path d="M422 88 Q427 93 432 88" stroke="#fce8bd" stroke-width="1.2" fill="none"/>
+                    <circle cx="424" cy="84" r="1" fill="#fce8bd"/>
+                    <circle cx="430" cy="84" r="1" fill="#fce8bd"/>
+
+                    <path d="M375 75 C385 58 415 58 425 75 C415 92 385 92 375 75 Z" fill="url(#eyeGlowGrad)" stroke="url(#goldFontGrad)" stroke-width="2"/>
+                    <circle cx="400" cy="75" r="11" fill="#1e1b4b" stroke="#fce8bd" stroke-width="1.2"/>
+                    <circle cx="400" cy="75" r="5" fill="#020617"/>
+                    <circle cx="398" cy="73" r="2" fill="#ffffff"/>
+
+                    <path class="eyelid" d="M375 75 C385 58 415 58 425 75 C415 92 385 92 375 75 Z" fill="#140226" stroke="url(#goldFontGrad)" stroke-width="2"/>
+                </g>
+
+                <g>
+                    <path d="M210 185 L180 165 L210 150 L230 170 Z" fill="#996e23" stroke="#3a1e03" stroke-width="1.5"/>
+                    <path d="M590 185 L620 165 L590 150 L570 170 Z" fill="#996e23" stroke="#3a1e03" stroke-width="1.5"/>
+                    <path d="M220 150 Q400 170 580 150 L570 195 Q400 215 230 195 Z" fill="url(#ribbonGrad)" stroke="#3a1e03" stroke-width="2.5"/>
+                    <text x="400" y="184" font-family="'Metamorphous', cursive" font-size="26" font-weight="bold" fill="#241302" letter-spacing="4" text-anchor="middle">IMPROV COMEDY</text>
+                </g>
+            </svg>
+
             <p class="tagline">Channeling punchlines, spectral wit, and unscripted mayhem from the great beyond.</p>
         </header>
 
@@ -486,18 +483,21 @@
             </div>
         </section>
 
-        <!-- Gallery -->
+        <!-- Gallery Section with Uploaded Photos -->
         <section class="tarot-card">
             <h2 class="card-title">Spectral Moments</h2>
             <div class="gallery-grid">
                 <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=600&q=80" alt="Stage lights and comedy atmosphere">
+                    <!-- Replace photo1.jpg with your exact uploaded image file name -->
+                    <img src="photo1.png" alt="Seyoncé troupe members laughing on stage">
                 </div>
                 <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=600&q=80" alt="Microphone on stage">
+                    <!-- Replace photo2.jpg with your exact uploaded image file name -->
+                    <img src="photo2.jpg" alt="Seyoncé cast performing seated scene">
                 </div>
                 <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=600&q=80" alt="Seance and mysterious mood">
+                    <!-- Replace poster.png with your exact uploaded image file name -->
+                    <img src="photo3.png" alt="Seyoncé Spirited Improv Comedy show poster">
                 </div>
             </div>
         </section>
@@ -531,6 +531,34 @@
             "An alien civilization whose only contact with Earth is old episodes of home renovation shows.",
             "Explaining modern Wi-Fi passwords to a Victorian ghost trapped in the router.",
             "A fortune teller who can only see really mundane things 5 seconds into the future."
+            "A ghost hunter trying to evict a spirit who pays rent on time.",
+            "A séance where the medium accidentally summons a disgruntled 1920s plumber.",
+            "An exorcist who keeps getting distracted by the haunted house’s open-concept kitchen.",
+            "A medieval witch attempting to explain her cauldron brew to a health inspector.",
+            "A grim reaper who takes a mental health day and leaves a temporary temp worker in charge.",
+            "A zombie trying to stick to a strict keto diet at a buffet.",
+            "Two competitive ghosts haunting the same suburban microwave.",
+            "A gargoyle applying for a remote customer support job.",
+            "A demon summoned by mistake during a middle school spelling bee.",
+            "An ancient mummy trying to navigate an airport TSA security checkpoint.",
+            "A potion master trying to sell artisanal witch's brew at a local farmer's market.",
+            "A banshee taking professional opera singing lessons to improve her scream.",
+            "A ghost trying to write a bad Yelp review for the house they're trapped in.",
+            "A werewolf struggling to explain his sudden hair growth to a corporate HR representative.",
+            "A séance where everyone keeps getting put on hold by the spirit world.",
+            "A poltergeist who uses their telekinetic powers exclusively for petty office pranks.",
+            "A clairvoyant tarot reader who only gets predictions about minor parking tickets.",
+            "A vampire trying to buy sunblock with an SPF of 10,000.",
+            "A haunted Ouija board that only communicates using emojis and modern internet slang.",
+            "A headless horseman trying to find an appropriate helmet for electric scooter commuting.",
+            "A swamp monster trying to negotiate a lease for a luxury high-rise apartment.",
+            "A spirit guide who gives terrible, hyper-specific financial advice.",
+            "A goblin trying to return a stolen pot of gold because of inflation.",
+            "A ghost trying to take a selfie for a paranormal dating app.",
+            "An undercover angel trying to blend in at a high-stakes poker tournament.",
+            "A witch's black cat demanding better union benefits and overtime tuna.",
+            "A séance medium who accidentally connects to a confused telemarketer in 1998.",
+            "A time-traveling Victorian ghost obsessed with air fryers."
         ];
 
         function generatePrompt() {
