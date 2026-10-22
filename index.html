@@ -106,6 +106,12 @@
             transition: transform 0.4s ease;
         }
 
+        /* Eyelid Styling for Blink Effect */
+        .eyelid {
+            transform-origin: 50% 15px;
+            transition: transform 0.25s ease-in-out;
+        }
+
         /* Floating animation */
         @keyframes float-eerie {
             0% { transform: translateY(0px) rotate(0deg); box-shadow: 0 5px 20px rgba(157, 78, 221, 0.7); }
@@ -113,8 +119,8 @@
             100% { transform: translateY(0px) rotate(0deg); box-shadow: 0 5px 20px rgba(157, 78, 221, 0.7); }
         }
 
-        /* Hover effect */
+        /* Hover Effect & Blink Animation Trigger */
         .flyer-logo-icon:hover {
             transform: translateY(-18px) scale(1.12) rotate(-3deg);
             border-color: var(--candle-amber);
-            box-shadow: 0 20px 40px rgba(255, 158, 44, 0
+            box-shadow: 0 20px 40px rgba(255, 158, 4
