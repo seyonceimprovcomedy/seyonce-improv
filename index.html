@@ -37,9 +37,15 @@
     body {
       margin: 0;
       color: var(--bone);
-      background:
-        radial-gradient(ellipse at 50% 26%, #24191a 0, transparent 42rem),
-        var(--black);
+      /* The hero artwork now sets the atmosphere across the whole site. */
+      background-color: #090708;
+      background-image:
+        linear-gradient(rgba(8, 6, 7, .76), rgba(8, 6, 7, .84)),
+        url("seyonce-hero.png");
+      background-size: cover;
+      background-position: center top;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
       font-family: var(--serif);
       -webkit-font-smoothing: antialiased;
     }
@@ -148,9 +154,8 @@
       outline: 1px solid rgba(170, 137, 82, .38);
       outline-offset: -8px;
       text-align: center;
-      background:
-        radial-gradient(ellipse at 50% 43%, rgba(126, 48, 43, .12), transparent 24rem),
-        linear-gradient(90deg, transparent 49.9%, rgba(170,137,82,.045) 50%, transparent 50.1%);
+      background: rgba(10, 7, 8, .58);
+      backdrop-filter: blur(1px);
     }
 
     .corner {
@@ -212,8 +217,11 @@
     }
 
     .engraving {
-      width: min(490px, 92%);
+      position: relative;
+      width: min(760px, 100%);
       margin: 18px auto 0;
+      line-height: 0;
+      isolation: isolate;
     }
 
     .engraving img {
@@ -221,6 +229,39 @@
       width: 100%;
       height: auto;
       border: 0;
+    }
+
+    /* A separate eyelid layer lets the realistic eye blink without moving the artwork. */
+    .eye-blink-layer {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      overflow: visible;
+      pointer-events: none;
+    }
+
+    .eye-lid {
+      transform-box: view-box;
+      transform-origin: 768px 370px;
+      transform: scaleY(0.015);
+      opacity: 0;
+    }
+
+    .engraving:hover .eye-lid,
+    .engraving:focus-within .eye-lid {
+      animation: realistic-blink 1.1s ease-in-out 1;
+    }
+
+    @keyframes realistic-blink {
+      0%, 100% { transform: scaleY(0.015); opacity: 0; }
+      8%, 24% { transform: scaleY(1); opacity: 1; }
+      35%, 100% { transform: scaleY(0.015); opacity: 0; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .engraving:hover .eye-lid,
+      .engraving:focus-within .eye-lid { animation: none; }
     }
 
     .bill-line {
@@ -397,7 +438,8 @@
       gap: 8%;
       padding: 66px 9% 72px;
       border-block: 1px solid var(--rule);
-      background: rgba(0, 0, 0, .18);
+      background: rgba(8, 6, 7, .58);
+      backdrop-filter: blur(1px);
     }
 
     .transcript-label {
@@ -524,6 +566,12 @@
       }
     }
 
+    @media (max-width: 700px) {
+      body {
+        background-attachment: scroll;
+      }
+    }
+
     @media (max-width: 390px) {
       .wordmark strong {
         font-size: .76rem;
@@ -601,8 +649,23 @@
 
         <p class="bill-subtitle">For the living · By the living · With your suggestions</p>
 
-        <div class="engraving">
+        <div class="engraving" tabindex="0" aria-label="Hover over the eye to make it blink">
           <img src="seyonce-hero.png" alt="A realistic emerald eye in an antique gold frame, floating above a séance table with hands and candlelight">
+          <svg class="eye-blink-layer" viewBox="0 0 1536 1024" preserveAspectRatio="none" aria-hidden="true">
+            <defs>
+              <linearGradient id="lidShade" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#10200c"/>
+                <stop offset=".55" stop-color="#1a2a0d"/>
+                <stop offset="1" stop-color="#080d07"/>
+              </linearGradient>
+              <filter id="lidSoft"><feGaussianBlur stdDeviation="2"/></filter>
+            </defs>
+            <g class="eye-lid">
+              <path d="M625 368 Q768 245 911 368 Q768 487 625 368Z" fill="url(#lidShade)" stroke="#b58b36" stroke-width="5"/>
+              <path d="M638 365 Q768 270 898 365" fill="none" stroke="#d3a64b" stroke-width="8" stroke-linecap="round"/>
+              <path d="M650 373 Q768 397 886 373" fill="none" stroke="#090b06" stroke-width="9" stroke-linecap="round" filter="url(#lidSoft)"/>
+            </g>
+          </svg>
         </div>
 
         <div class="bill-line"></div>
