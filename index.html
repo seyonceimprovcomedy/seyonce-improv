@@ -37,15 +37,9 @@
     body {
       margin: 0;
       color: var(--bone);
-      /* The hero artwork now sets the atmosphere across the whole site. */
-      background-color: #090708;
-      background-image:
-        linear-gradient(rgba(8, 6, 7, .76), rgba(8, 6, 7, .84)),
-        url("seyonce-hero.png");
-      background-size: cover;
-      background-position: center top;
-      background-repeat: no-repeat;
-      background-attachment: fixed;
+      background:
+        radial-gradient(ellipse at 50% 26%, #24191a 0, transparent 42rem),
+        var(--black);
       font-family: var(--serif);
       -webkit-font-smoothing: antialiased;
     }
@@ -154,8 +148,9 @@
       outline: 1px solid rgba(170, 137, 82, .38);
       outline-offset: -8px;
       text-align: center;
-      background: rgba(10, 7, 8, .58);
-      backdrop-filter: blur(1px);
+      background:
+        radial-gradient(ellipse at 50% 43%, rgba(126, 48, 43, .12), transparent 24rem),
+        linear-gradient(90deg, transparent 49.9%, rgba(170,137,82,.045) 50%, transparent 50.1%);
     }
 
     .corner {
@@ -217,51 +212,15 @@
     }
 
     .engraving {
-      position: relative;
-      width: min(760px, 100%);
+      width: min(490px, 92%);
       margin: 18px auto 0;
-      line-height: 0;
-      isolation: isolate;
     }
 
-    .engraving img {
+    .engraving svg {
       display: block;
       width: 100%;
       height: auto;
-      border: 0;
-    }
-
-    /* A separate eyelid layer lets the realistic eye blink without moving the artwork. */
-    .eye-blink-layer {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
       overflow: visible;
-      pointer-events: none;
-    }
-
-    .eye-lid {
-      transform-box: view-box;
-      transform-origin: 768px 370px;
-      transform: scaleY(0.015);
-      opacity: 0;
-    }
-
-    .engraving:hover .eye-lid,
-    .engraving:focus-within .eye-lid {
-      animation: realistic-blink 1.1s ease-in-out 1;
-    }
-
-    @keyframes realistic-blink {
-      0%, 100% { transform: scaleY(0.015); opacity: 0; }
-      8%, 24% { transform: scaleY(1); opacity: 1; }
-      35%, 100% { transform: scaleY(0.015); opacity: 0; }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      .engraving:hover .eye-lid,
-      .engraving:focus-within .eye-lid { animation: none; }
     }
 
     .bill-line {
@@ -345,6 +304,38 @@
 
     .bill-foot span:last-child {
       text-align: right;
+    }
+
+    /* Floating, hover-to-blink eye */
+    .mystic-eye {
+      cursor: pointer;
+    }
+
+    .eye-float {
+      transform-box: fill-box;
+      transform-origin: center;
+      animation: eye-drift 4.8s ease-in-out infinite;
+    }
+
+    .closed-lid {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    /* The lid uses the exact same outline coordinates as the open eye,
+       so it covers the eye cleanly instead of shrinking the whole drawing. */
+    .mystic-eye:hover .closed-lid {
+      animation: lid-close 2.8s ease-in-out 1;
+    }
+
+    @keyframes eye-drift {
+      0%, 100% { transform: translateY(0); }
+      50%      { transform: translateY(-5px); }
+    }
+
+    @keyframes lid-close {
+      0%, 24%, 80%, 100% { opacity: 0; }
+      42%, 61%            { opacity: 1; }
     }
 
     /* Upcoming shows */
@@ -438,8 +429,7 @@
       gap: 8%;
       padding: 66px 9% 72px;
       border-block: 1px solid var(--rule);
-      background: rgba(8, 6, 7, .58);
-      backdrop-filter: blur(1px);
+      background: rgba(0, 0, 0, .18);
     }
 
     .transcript-label {
@@ -566,12 +556,6 @@
       }
     }
 
-    @media (max-width: 700px) {
-      body {
-        background-attachment: scroll;
-      }
-    }
-
     @media (max-width: 390px) {
       .wordmark strong {
         font-size: .76rem;
@@ -628,7 +612,7 @@
 
       <nav aria-label="Main navigation">
         <a href="#appearances">New Conjurings</a>
-        <a href="https://www.youtube.com/@Seyonc%C3%A9ImprovComedy">Video Evidence Files</a>
+        <a href="https://www.youtube.com/@Seyonc%C3%A9ImprovComedy">Video Evidence</a>
         <a href="mailto:seyonceimprovcomedy@gmail.com">Summon us</a>
       </nav>
     </header>
@@ -649,22 +633,209 @@
 
         <p class="bill-subtitle">For the living · By the living · With your suggestions</p>
 
-        <div class="engraving" tabindex="0" aria-label="Hover over the eye to make it blink">
-          <img src="seyonce-hero.png" alt="A realistic emerald eye in an antique gold frame, floating above a séance table with hands and candlelight">
-          <svg class="eye-blink-layer" viewBox="0 0 1536 1024" preserveAspectRatio="none" aria-hidden="true">
+        <div class="engraving">
+          <svg viewBox="0 0 600 380" role="img" aria-label="A séance table beneath a floating green eye">
             <defs>
-              <linearGradient id="lidShade" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0" stop-color="#10200c"/>
-                <stop offset=".55" stop-color="#1a2a0d"/>
-                <stop offset="1" stop-color="#080d07"/>
+              <radialGradient id="eyeWhite" cx="50%" cy="42%" r="62%">
+                <stop offset="0%" stop-color="#f4ead5"/>
+                <stop offset="72%" stop-color="#c7b895"/>
+                <stop offset="100%" stop-color="#77634b"/>
+              </radialGradient>
+
+              <radialGradient id="greenIris" cx="43%" cy="39%" r="64%">
+                <stop offset="0%" stop-color="#b7ca79"/>
+                <stop offset="35%" stop-color="#66884d"/>
+                <stop offset="72%" stop-color="#274d36"/>
+                <stop offset="100%" stop-color="#13251d"/>
+              </radialGradient>
+
+              <radialGradient id="pupilShade">
+                <stop offset="68%" stop-color="#070a08"/>
+                <stop offset="100%" stop-color="#18221a"/>
+              </radialGradient>
+
+              <linearGradient id="eyeLid" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#a98256"/>
+                <stop offset="100%" stop-color="#55362f"/>
               </linearGradient>
-              <filter id="lidSoft"><feGaussianBlur stdDeviation="2"/></filter>
+
+              <filter id="eyeShadow" x="-40%" y="-40%" width="180%" height="180%">
+                <feGaussianBlur in="SourceAlpha" stdDeviation="3" result="blur"/>
+                <feOffset in="blur" dy="3" result="offset"/>
+                <feComponentTransfer in="offset" result="shadow">
+                  <feFuncA type="linear" slope=".55"/>
+                </feComponentTransfer>
+                <feMerge>
+                  <feMergeNode in="shadow"/>
+                  <feMergeNode in="SourceGraphic"/>
+                </feMerge>
+              </filter>
+
+              <clipPath id="eyeAperture">
+                <path d="M247 113
+                  C263 85 284 74 300 74
+                  C316 74 337 85 353 113
+                  C337 141 316 152 300 152
+                  C284 152 263 141 247 113Z"/>
+              </clipPath>
             </defs>
-            <g class="eye-lid">
-              <path d="M625 368 Q768 245 911 368 Q768 487 625 368Z" fill="url(#lidShade)" stroke="#b58b36" stroke-width="5"/>
-              <path d="M638 365 Q768 270 898 365" fill="none" stroke="#d3a64b" stroke-width="8" stroke-linecap="round"/>
-              <path d="M650 373 Q768 397 886 373" fill="none" stroke="#090b06" stroke-width="9" stroke-linecap="round" filter="url(#lidSoft)"/>
+
+            <!-- Engraved celestial diagram -->
+            <g fill="none" stroke="#b89a65" stroke-width="1.25">
+              <circle cx="300" cy="174" r="151" opacity=".76"/>
+              <circle cx="300" cy="174" r="137" stroke-dasharray="1 7"/>
+              <ellipse cx="300" cy="174" rx="105" ry="151" opacity=".55"/>
+              <path d="M300 13v24M300 311v24M139 174h24M437 174h24"/>
+              <path d="m186 60 16 17m196 194 16 17m0-228-16 17M202 271l-16 17"/>
+              <path d="M300 40 433 267H167z" opacity=".35"/>
+              <path d="M167 81h266M167 267h266" opacity=".35"/>
+
+              <path d="m300 31 4 11 11 4-11 4-4 11-4-11-11-4 11-4z"/>
+              <path d="m159 171 3 8 8 3-8 3-3 8-3-8-8-3 8-3z"/>
+              <path d="m441 171 3 8 8 3-8 3-3 8-3-8-8-3 8-3z"/>
+              <circle cx="221" cy="73" r="2" fill="#b89a65"/>
+              <circle cx="379" cy="73" r="2" fill="#b89a65"/>
+              <circle cx="220" cy="276" r="2" fill="#b89a65"/>
+              <circle cx="380" cy="276" r="2" fill="#b89a65"/>
             </g>
+
+            <!-- Candle holders -->
+            <g fill="none" stroke="#b89a65" stroke-width="1.25">
+              <path d="M103 196h35m-27 0 4 28h11l4-28m-17 28h15"/>
+              <path d="M462 196h35m-27 0 4 28h11l4-28m-17 28h15"/>
+            </g>
+
+            <g fill="#84302b" stroke="#aa4b3e">
+              <path d="M119 187c-8-10 5-13 0-22 12 9 8 16 0 22z"/>
+              <path d="M478 187c-8-10 5-13 0-22 12 9 8 16 0 22z"/>
+            </g>
+
+            <!-- Floating eye: hovers continuously and blinks on hover -->
+            <g class="mystic-eye" role="img" aria-label="Floating green eye">
+              <ellipse cx="300" cy="113" rx="67" ry="53"
+                       fill="transparent" pointer-events="all"/>
+
+              <g class="eye-float">
+                <g class="eye-open">
+                  <path d="M247 113
+                    C263 85 284 74 300 74
+                    C316 74 337 85 353 113
+                    C337 141 316 152 300 152
+                    C284 152 263 141 247 113Z"
+                    fill="url(#eyeWhite)"
+                    stroke="#d2b881"
+                    stroke-width="2"
+                    filter="url(#eyeShadow)"/>
+
+                  <g clip-path="url(#eyeAperture)">
+                    <path d="M247 113
+                      C263 85 284 74 300 74
+                      C316 74 337 85 353 113
+                      C337 141 316 152 300 152
+                      C284 152 263 141 247 113Z"
+                      fill="url(#eyeWhite)"/>
+
+                    <!-- Fine veins -->
+                    <g fill="none" stroke="#9d5547" stroke-width=".8" opacity=".65">
+                      <path d="M260 107c8 2 10 5 15 11"/>
+                      <path d="M263 121c7-2 9-5 14-8"/>
+                      <path d="M338 106c-8 3-10 6-14 11"/>
+                      <path d="M337 122c-6-2-9-5-13-9"/>
+                    </g>
+
+                    <!-- Green iris -->
+                    <circle cx="300" cy="113" r="27"
+                            fill="url(#greenIris)"
+                            stroke="#c2a364"
+                            stroke-width="1.2"/>
+
+                    <circle cx="300" cy="113" r="22"
+                            fill="none"
+                            stroke="#c3d18a"
+                            stroke-width=".7"
+                            opacity=".65"/>
+
+                    <!-- Iris fibres -->
+                    <g stroke="#c7d394" stroke-width=".8" opacity=".68">
+                      <path d="M300 88v8"/>
+                      <path d="m311 91-4 8"/>
+                      <path d="m320 98-7 6"/>
+                      <path d="m325 109-9 2"/>
+                      <path d="m322 122-8-4"/>
+                      <path d="m314 132-5-8"/>
+                      <path d="M300 138v-9"/>
+                      <path d="m289 135 4-8"/>
+                      <path d="m280 128 7-6"/>
+                      <path d="m275 117 9-2"/>
+                      <path d="m278 104 8 4"/>
+                      <path d="m286 94 5 8"/>
+                    </g>
+
+                    <!-- Pupil and reflected light -->
+                    <ellipse cx="300" cy="113" rx="9" ry="14" fill="url(#pupilShade)"/>
+                    <ellipse cx="292" cy="103" rx="4.4" ry="2.7"
+                             fill="#fff7df" opacity=".9"/>
+                    <circle cx="308" cy="122" r="1.8" fill="#f4ead5" opacity=".85"/>
+                  </g>
+
+                  <!-- Eyelid folds -->
+                  <path d="M252 106c14-22 31-31 48-31s34 9 48 31"
+                        fill="none" stroke="url(#eyeLid)" stroke-width="3"/>
+                  <path d="M261 132c12 14 25 20 39 20s27-6 39-20"
+                        fill="none" stroke="#705144" stroke-width="2" opacity=".8"/>
+                </g>
+
+                <!-- Closed eyelid follows the exact eye silhouette -->
+                <g class="closed-lid">
+                  <path d="M247 113
+                    C263 85 284 74 300 74
+                    C316 74 337 85 353 113
+                    C337 141 316 152 300 152
+                    C284 152 263 141 247 113Z"
+                    fill="url(#eyeLid)"
+                    stroke="#6d4938"
+                    stroke-width="1.5"/>
+                  <path d="M249 113 C270 120 285 123 300 123
+                    C315 123 330 120 351 113"
+                    fill="none"
+                    stroke="#34231f"
+                    stroke-width="2.2"
+                    stroke-linecap="round"/>
+                  <path d="M260 107 C276 115 288 117 300 117
+                    C312 117 324 115 340 107"
+                    fill="none"
+                    stroke="#b08b62"
+                    stroke-width="1"
+                    opacity=".48"/>
+                </g>
+              </g>
+            </g>
+
+            <!-- Séance table -->
+            <g fill="none" stroke="#b89a65" stroke-width="1.25">
+              <ellipse cx="300" cy="221" rx="117" ry="32" fill="#171112"/>
+              <ellipse cx="300" cy="213" rx="117" ry="31"/>
+              <path d="M207 222c17 19 169 19 186 0"/>
+              <path d="m228 239-15 51m159-51 15 51m-159 0h159"/>
+              <path d="M222 249c22 13 134 13 156 0" opacity=".55"/>
+
+              <!-- Hands around the table -->
+              <path d="M181 206c-12-13-19-30-16-39 2-6 8-6 11 0l9 18c-3-17-1-26 5-27 6-1 8 10 9 20 3-13 8-18 13-15 5 3 1 15-1 23 8-10 14-12 17-7 3 5-5 15-12 23"/>
+              <path d="M419 206c12-13 19-30 16-39-2-6-8-6-11 0l-9 18c3-17 1-26-5-27-6-1-8 10-9 20-3-13-8-18-13-15-5 3-1 15 1 23-8-10-14-12-17-7-3 5 5 15 12 23"/>
+              <path d="M269 283c-9 11-13 24-9 30 4 6 10 1 15-7l12-17c-5 17-3 25 3 26 6 1 9-9 11-19 3 11 8 15 13 12 4-3 0-14-3-21 8 8 14 9 17 4 3-5-5-14-12-20"/>
+            </g>
+
+            <g fill="#aa4b3e">
+              <circle cx="300" cy="113" r="2"/>
+              <path d="m300 198 4 8 9 1-7 6 2 9-8-5-8 5 2-9-7-6 9-1z"/>
+              <circle cx="119" cy="187" r="2"/>
+              <circle cx="478" cy="187" r="2"/>
+            </g>
+
+            <text x="300" y="357" text-anchor="middle" fill="#b89a65"
+                  font-family="monospace" font-size="9" letter-spacing="4">
+              THE TABLE IS SET. THE SCRIPT IS NOT.
+            </text>
           </svg>
         </div>
 
@@ -727,7 +898,7 @@
 
         <div class="transcript-copy">
           <p>
-            SEYONCÉ makes unscripted comedy <i>with</i> the audience, not at them.
+            SEYONCÉ makes unscripted comedy <i>with</i>i> the audience, not at them.
             A suggestion becomes a scene; a scene becomes a strange little
             world that exists for one night only.
           </p>
