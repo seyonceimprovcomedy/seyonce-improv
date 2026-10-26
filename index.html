@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#100d0e">
   <title>SEYONCÉ'S COMEDIC SÉANCE</title>
+  <meta name="description" content="Unscripted comedy for an unpredictable universe.">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -25,9 +26,13 @@
       --mono: "DM Mono", monospace;
     }
 
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+    }
 
-    html { scroll-behavior: smooth; }
+    html {
+      scroll-behavior: smooth;
+    }
 
     body {
       margin: 0;
@@ -49,7 +54,9 @@
       background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.28'/%3E%3C/svg%3E");
     }
 
-    a { color: inherit; }
+    a {
+      color: inherit;
+    }
 
     a:focus-visible {
       outline: 1px solid var(--bone);
@@ -68,7 +75,7 @@
       text-transform: uppercase;
     }
 
-    /* Small, restrained navigation: the poster is the main event. */
+    /* Header */
     .masthead {
       display: flex;
       min-height: 77px;
@@ -128,9 +135,11 @@
       text-transform: uppercase;
     }
 
-    nav a:hover { color: var(--bone); }
+    nav a:hover {
+      color: var(--bone);
+    }
 
-    /* The handbill */
+    /* Main handbill */
     .bill {
       position: relative;
       margin: 30px 0 0;
@@ -293,9 +302,54 @@
       text-align: left;
     }
 
-    .bill-foot span:last-child { text-align: right; }
+    .bill-foot span:last-child {
+      text-align: right;
+    }
 
-    /* Upcoming appearances — typeset like notices on the bill, not cards. */
+    /* Floating, hover-to-blink eye */
+    .mystic-eye {
+      cursor: pointer;
+    }
+
+    .eye-float {
+      transform-box: fill-box;
+      transform-origin: center;
+      animation: eye-drift 4.8s ease-in-out infinite;
+    }
+
+    .eye-open {
+      transform-box: fill-box;
+      transform-origin: center;
+    }
+
+    .closed-lid {
+      opacity: 0;
+    }
+
+    .mystic-eye:hover .eye-open {
+      animation: slow-blink 1.6s ease-in-out 1;
+    }
+
+    .mystic-eye:hover .closed-lid {
+      animation: lid-close 1.6s ease-in-out 1;
+    }
+
+    @keyframes eye-drift {
+      0%, 100% { transform: translateY(0); }
+      50%      { transform: translateY(-5px); }
+    }
+
+    @keyframes slow-blink {
+      0%, 20%, 78%, 100% { transform: scaleY(1); }
+      42%, 58%            { transform: scaleY(.035); }
+    }
+
+    @keyframes lid-close {
+      0%, 20%, 78%, 100% { opacity: 0; }
+      42%, 58%            { opacity: 1; }
+    }
+
+    /* Upcoming shows */
     .appearances {
       padding: 83px 9% 89px;
     }
@@ -329,7 +383,9 @@
       border-top: 1px solid var(--rule);
     }
 
-    .appearance:last-child { border-bottom: 1px solid var(--rule); }
+    .appearance:last-child {
+      border-bottom: 1px solid var(--rule);
+    }
 
     .date {
       color: var(--red-light);
@@ -372,9 +428,11 @@
       white-space: nowrap;
     }
 
-    .ticket:hover { color: var(--bone); }
+    .ticket:hover {
+      color: var(--bone);
+    }
 
-    /* About section as a short séance transcript. */
+    /* About */
     .transcript {
       position: relative;
       display: grid;
@@ -405,13 +463,16 @@
       line-height: 1.7;
     }
 
-    .transcript-copy p { margin: 0 0 14px; }
+    .transcript-copy p {
+      margin: 0 0 14px;
+    }
 
     .transcript-copy .aside {
       color: var(--red-light);
       font-style: italic;
     }
 
+    /* Footer */
     footer {
       display: flex;
       align-items: center;
@@ -430,7 +491,9 @@
       text-transform: uppercase;
     }
 
-    footer a:hover { color: var(--bone); }
+    footer a:hover {
+      color: var(--bone);
+    }
 
     .footer-links {
       display: flex;
@@ -438,26 +501,39 @@
     }
 
     @media (max-width: 700px) {
-      .shell { width: min(100% - 28px, 560px); }
+      .shell {
+        width: min(100% - 28px, 560px);
+      }
 
-      .masthead { min-height: 68px; }
+      .masthead {
+        min-height: 68px;
+      }
 
-      nav { gap: 14px; }
-      nav a { font-size: .53rem; }
+      nav {
+        gap: 14px;
+      }
+
+      nav a {
+        font-size: .53rem;
+      }
 
       .bill {
         margin-top: 18px;
         padding: 31px 7% 34px;
       }
 
-      .bill h1 { font-size: clamp(2.65rem, 12vw, 4.6rem); }
+      .bill h1 {
+        font-size: clamp(2.65rem, 12vw, 4.6rem);
+      }
 
       .bill-foot {
         font-size: .52rem;
         letter-spacing: .08em;
       }
 
-      .appearances { padding: 60px 3% 65px; }
+      .appearances {
+        padding: 60px 3% 65px;
+      }
 
       .section-heading {
         align-items: flex-start;
@@ -470,7 +546,9 @@
         gap: 13px;
       }
 
-      .appearance h3 { font-size: 1.4rem; }
+      .appearance h3 {
+        font-size: 1.4rem;
+      }
 
       .ticket {
         grid-column: 2;
@@ -490,16 +568,44 @@
     }
 
     @media (max-width: 390px) {
-      .wordmark strong { font-size: .76rem; }
-      .wordmark small { font-size: .42rem; }
-      nav { gap: 9px; }
-      nav a { font-size: .48rem; }
-      .bill-foot span { max-width: 45%; }
+      .wordmark strong {
+        font-size: .76rem;
+      }
+
+      .wordmark small {
+        font-size: .42rem;
+      }
+
+      nav {
+        gap: 9px;
+      }
+
+      nav a {
+        font-size: .48rem;
+      }
+
+      .bill-foot span {
+        max-width: 45%;
+      }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      html { scroll-behavior: auto; }
-      *, *::before, *::after { transition-duration: .01ms !important; }
+      html {
+        scroll-behavior: auto;
+      }
+
+      .eye-float {
+        animation: none;
+      }
+
+      .mystic-eye:hover .eye-open,
+      .mystic-eye:hover .closed-lid {
+        animation: none;
+      }
+
+      *, *::before, *::after {
+        transition-duration: .01ms !important;
+      }
     }
   </style>
 </head>
@@ -539,9 +645,54 @@
         <p class="bill-subtitle">For the living · By the living · With your suggestions</p>
 
         <div class="engraving">
-          <svg viewBox="0 0 600 380" role="img" aria-label="Engraved séance table surrounded by candlelight">
+          <svg viewBox="0 0 600 380" role="img" aria-label="A séance table beneath a floating green eye">
+            <defs>
+              <radialGradient id="eyeWhite" cx="50%" cy="42%" r="62%">
+                <stop offset="0%" stop-color="#f4ead5"/>
+                <stop offset="72%" stop-color="#c7b895"/>
+                <stop offset="100%" stop-color="#77634b"/>
+              </radialGradient>
+
+              <radialGradient id="greenIris" cx="43%" cy="39%" r="64%">
+                <stop offset="0%" stop-color="#b7ca79"/>
+                <stop offset="35%" stop-color="#66884d"/>
+                <stop offset="72%" stop-color="#274d36"/>
+                <stop offset="100%" stop-color="#13251d"/>
+              </radialGradient>
+
+              <radialGradient id="pupilShade">
+                <stop offset="68%" stop-color="#070a08"/>
+                <stop offset="100%" stop-color="#18221a"/>
+              </radialGradient>
+
+              <linearGradient id="eyeLid" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#a98256"/>
+                <stop offset="100%" stop-color="#55362f"/>
+              </linearGradient>
+
+              <filter id="eyeShadow" x="-40%" y="-40%" width="180%" height="180%">
+                <feGaussianBlur in="SourceAlpha" stdDeviation="3" result="blur"/>
+                <feOffset in="blur" dy="3" result="offset"/>
+                <feComponentTransfer in="offset" result="shadow">
+                  <feFuncA type="linear" slope=".55"/>
+                </feComponentTransfer>
+                <feMerge>
+                  <feMergeNode in="shadow"/>
+                  <feMergeNode in="SourceGraphic"/>
+                </feMerge>
+              </filter>
+
+              <clipPath id="eyeAperture">
+                <path d="M247 113
+                  C263 85 284 74 300 74
+                  C316 74 337 85 353 113
+                  C337 141 316 152 300 152
+                  C284 152 263 141 247 113Z"/>
+              </clipPath>
+            </defs>
+
+            <!-- Engraved celestial diagram -->
             <g fill="none" stroke="#b89a65" stroke-width="1.25">
-              <!-- Outer occult diagram -->
               <circle cx="300" cy="174" r="151" opacity=".76"/>
               <circle cx="300" cy="174" r="137" stroke-dasharray="1 7"/>
               <ellipse cx="300" cy="174" rx="105" ry="151" opacity=".55"/>
@@ -550,7 +701,6 @@
               <path d="M300 40 433 267H167z" opacity=".35"/>
               <path d="M167 81h266M167 267h266" opacity=".35"/>
 
-              <!-- Stars and marks -->
               <path d="m300 31 4 11 11 4-11 4-4 11-4-11-11-4 11-4z"/>
               <path d="m159 171 3 8 8 3-8 3-3 8-3-8-8-3 8-3z"/>
               <path d="m441 171 3 8 8 3-8 3-3 8-3-8-8-3 8-3z"/>
@@ -558,20 +708,106 @@
               <circle cx="379" cy="73" r="2" fill="#b89a65"/>
               <circle cx="220" cy="276" r="2" fill="#b89a65"/>
               <circle cx="380" cy="276" r="2" fill="#b89a65"/>
+            </g>
 
-              <!-- Candle holders -->
+            <!-- Candle holders -->
+            <g fill="none" stroke="#b89a65" stroke-width="1.25">
               <path d="M103 196h35m-27 0 4 28h11l4-28m-17 28h15"/>
               <path d="M462 196h35m-27 0 4 28h11l4-28m-17 28h15"/>
-              <path d="M119 187c-8-10 5-13 0-22 12 9 8 16 0 22z" fill="#84302b" stroke="#aa4b3e"/>
-              <path d="M478 187c-8-10 5-13 0-22 12 9 8 16 0 22z" fill="#84302b" stroke="#aa4b3e"/>
+            </g>
 
-              <!-- Floating spirit / eye -->
-              <path d="M259 113c12-21 28-32 41-32s29 11 41 32c-12 21-28 32-41 32s-29-11-41-32z"/>
-              <circle cx="300" cy="113" r="12"/>
-              <circle cx="300" cy="113" r="4" fill="#b89a65"/>
-              <path d="M300 68v-15m0 119v-14m-57-45h-16m162 0h-16"/>
+            <g fill="#84302b" stroke="#aa4b3e">
+              <path d="M119 187c-8-10 5-13 0-22 12 9 8 16 0 22z"/>
+              <path d="M478 187c-8-10 5-13 0-22 12 9 8 16 0 22z"/>
+            </g>
 
-              <!-- Table top -->
+            <!-- Floating eye: hovers continuously and blinks on hover -->
+            <g class="mystic-eye" role="img" aria-label="Floating green eye">
+              <ellipse cx="300" cy="113" rx="67" ry="53"
+                       fill="transparent" pointer-events="all"/>
+
+              <g class="eye-float">
+                <g class="eye-open">
+                  <path d="M247 113
+                    C263 85 284 74 300 74
+                    C316 74 337 85 353 113
+                    C337 141 316 152 300 152
+                    C284 152 263 141 247 113Z"
+                    fill="url(#eyeWhite)"
+                    stroke="#d2b881"
+                    stroke-width="2"
+                    filter="url(#eyeShadow)"/>
+
+                  <g clip-path="url(#eyeAperture)">
+                    <path d="M247 113
+                      C263 85 284 74 300 74
+                      C316 74 337 85 353 113
+                      C337 141 316 152 300 152
+                      C284 152 263 141 247 113Z"
+                      fill="url(#eyeWhite)"/>
+
+                    <!-- Fine veins -->
+                    <g fill="none" stroke="#9d5547" stroke-width=".8" opacity=".65">
+                      <path d="M260 107c8 2 10 5 15 11"/>
+                      <path d="M263 121c7-2 9-5 14-8"/>
+                      <path d="M338 106c-8 3-10 6-14 11"/>
+                      <path d="M337 122c-6-2-9-5-13-9"/>
+                    </g>
+
+                    <!-- Green iris -->
+                    <circle cx="300" cy="113" r="27"
+                            fill="url(#greenIris)"
+                            stroke="#c2a364"
+                            stroke-width="1.2"/>
+
+                    <circle cx="300" cy="113" r="22"
+                            fill="none"
+                            stroke="#c3d18a"
+                            stroke-width=".7"
+                            opacity=".65"/>
+
+                    <!-- Iris fibres -->
+                    <g stroke="#c7d394" stroke-width=".8" opacity=".68">
+                      <path d="M300 88v8"/>
+                      <path d="m311 91-4 8"/>
+                      <path d="m320 98-7 6"/>
+                      <path d="m325 109-9 2"/>
+                      <path d="m322 122-8-4"/>
+                      <path d="m314 132-5-8"/>
+                      <path d="M300 138v-9"/>
+                      <path d="m289 135 4-8"/>
+                      <path d="m280 128 7-6"/>
+                      <path d="m275 117 9-2"/>
+                      <path d="m278 104 8 4"/>
+                      <path d="m286 94 5 8"/>
+                    </g>
+
+                    <!-- Pupil and reflected light -->
+                    <ellipse cx="300" cy="113" rx="9" ry="14" fill="url(#pupilShade)"/>
+                    <ellipse cx="292" cy="103" rx="4.4" ry="2.7"
+                             fill="#fff7df" opacity=".9"/>
+                    <circle cx="308" cy="122" r="1.8" fill="#f4ead5" opacity=".85"/>
+                  </g>
+
+                  <!-- Eyelid folds -->
+                  <path d="M252 106c14-22 31-31 48-31s34 9 48 31"
+                        fill="none" stroke="url(#eyeLid)" stroke-width="3"/>
+                  <path d="M261 132c12 14 25 20 39 20s27-6 39-20"
+                        fill="none" stroke="#705144" stroke-width="2" opacity=".8"/>
+                </g>
+
+                <!-- Closed eyelid appears during the blink -->
+                <path class="closed-lid"
+                      d="M249 113 Q300 137 351 113"
+                      fill="none"
+                      stroke="#d2b881"
+                      stroke-width="3"
+                      stroke-linecap="round"/>
+              </g>
+            </g>
+
+            <!-- Séance table -->
+            <g fill="none" stroke="#b89a65" stroke-width="1.25">
               <ellipse cx="300" cy="221" rx="117" ry="32" fill="#171112"/>
               <ellipse cx="300" cy="213" rx="117" ry="31"/>
               <path d="M207 222c17 19 169 19 186 0"/>
@@ -584,7 +820,6 @@
               <path d="M269 283c-9 11-13 24-9 30 4 6 10 1 15-7l12-17c-5 17-3 25 3 26 6 1 9-9 11-19 3 11 8 15 13 12 4-3 0-14-3-21 8 8 14 9 17 4 3-5-5-14-12-20"/>
             </g>
 
-            <!-- Red ink details -->
             <g fill="#aa4b3e">
               <circle cx="300" cy="113" r="2"/>
               <path d="m300 198 4 8 9 1-7 6 2 9-8-5-8 5 2-9-7-6 9-1z"/>
@@ -601,7 +836,11 @@
 
         <div class="bill-line"></div>
 
-        <p class="promise">We summon scenes.<br><em>The spirits have better things to do.</em></p>
+        <p class="promise">
+          We summon scenes.<br>
+          <em>The spirits have better things to do.</em>
+        </p>
+
         <p class="bill-copy">
           A comedy séance conducted entirely in the present tense.
           You bring the suggestion. We bring absolutely no plan.
@@ -623,7 +862,7 @@
           <p class="mono">The future is subject to change</p>
         </div>
 
-        <!-- Replace sample dates, show information, and ticket URLs. -->
+        <!-- Replace sample dates, event information, and ticket URLs. -->
         <article class="appearance">
           <div class="date">DD<small>Month · Year</small></div>
           <div>
@@ -646,7 +885,10 @@
       <section class="transcript" id="company" aria-labelledby="company-title">
         <div>
           <div class="transcript-label mono">A fragment from the séance</div>
-          <h2 id="company-title">“Is anyone there?”<br>“We are. We’re improvising.”</h2>
+          <h2 id="company-title">
+            “Is anyone there?”<br>
+            “We are. We’re improvising.”
+          </h2>
         </div>
 
         <div class="transcript-copy">
@@ -672,4 +914,4 @@
     </footer>
   </div>
 </body>
-</html>
+</html>c
