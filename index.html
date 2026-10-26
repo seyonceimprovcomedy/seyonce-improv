@@ -1,488 +1,757 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Seyoncé Improv Comedy | Mischief Night Seance</title>
-    
-    <!-- Preconnect to Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Playfair+Display:ital,wght@0,600;0,800;1,400&family=Metamorphous&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-    
-    <style>
-        :root {
-            --bg-dark: #07050d;
-            --bg-card: rgba(18, 13, 31, 0.9);
-            --gold-primary: #e5a93c;
-            --gold-light: #f7d287;
-            --gold-dark: #a8731d;
-            --candle-amber: #ff9e2c;
-            --mystic-purple: #2a1b40;
-            --cosmic-glow: rgba(157, 78, 221, 0.35);
-            --text-main: #f0e6d2;
-            --text-muted: #c9bc9c;
-            --border-gold: 2px solid #e5a93c;
-        }
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#eee8dc">
+  <title>SEYONCÉ — The Improv Company</title>
+  <meta name="description" content="Unscripted comedy for an unpredictable universe.">
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 
-        body {
-            background-color: var(--bg-dark);
-            background-image: 
-                radial-gradient(circle at 50% 20%, rgba(74, 20, 140, 0.45) 0%, transparent 65%),
-                radial-gradient(circle at 20% 80%, rgba(255, 158, 44, 0.15) 0%, transparent 40%),
-                radial-gradient(circle at 80% 80%, rgba(123, 44, 191, 0.2) 0%, transparent 40%);
-            color: var(--text-main);
-            font-family: 'Playfair Display', serif;
-            min-height: 100vh;
-            line-height: 1.6;
-            padding: 1rem;
-            position: relative;
-        }
+  <style>
+    :root {
+      --paper: #eee8dc;
+      --paper-deep: #e3dacb;
+      --ink: #201e1a;
+      --muted: #706b61;
+      --red: #a43b31;
+      --red-dark: #76251f;
+      --gold: #c59a55;
+      --line: rgba(32, 30, 26, .22);
+      --serif: "Instrument Serif", Georgia, serif;
+      --sans: "DM Sans", Arial, sans-serif;
+      --mono: "DM Mono", monospace;
+    }
 
-        /* Celestial Outer Border Frame */
-        body::before {
-            content: "";
-            position: fixed;
-            top: 10px; left: 10px; right: 10px; bottom: 10px;
-            border: 1px solid rgba(229, 169, 60, 0.4);
-            outline: 2px solid rgba(229, 169, 60, 0.2);
-            outline-offset: 4px;
-            pointer-events: none;
-            z-index: 999;
-        }
+    * { box-sizing: border-box; }
 
-        .corner-star {
-            position: fixed;
-            color: var(--gold-primary);
-            font-size: 1.2rem;
-            pointer-events: none;
-            z-index: 1000;
-        }
-        .top-left { top: 15px; left: 15px; }
-        .top-right { top: 15px; right: 15px; }
-        .bottom-left { bottom: 15px; left: 15px; }
-        .bottom-right { bottom: 15px; right: 15px; }
+    html { scroll-behavior: smooth; }
 
-        .container {
-            max-width: 950px;
-            margin: 0 auto;
-            padding: 1.5rem 1rem;
-            position: relative;
-            z-index: 10;
-        }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background-color: var(--paper);
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.09'/%3E%3C/svg%3E");
+      font-family: var(--sans);
+      -webkit-font-smoothing: antialiased;
+    }
 
-        /* Original Header Layout */
-        header {
-            text-align: center;
-            padding: 3rem 1rem 2rem;
-            position: relative;
-        }
+    a { color: inherit; }
 
-        /* Floating Crystal Ball Logo with Hover Blink */
-        .flyer-logo-icon {
-            width: 120px;
-            height: 120px;
-            margin: 0 auto 1.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: radial-gradient(circle, rgba(157, 78, 221, 0.6) 0%, rgba(20, 10, 35, 0.9) 70%);
-            border: 3px solid var(--gold-primary);
-            border-radius: 50%;
-            box-shadow: 0 0 25px rgba(157, 78, 221, 0.8), inset 0 0 15px rgba(255, 158, 44, 0.5);
-            animation: float-eerie 4s ease-in-out infinite;
-            transition: all 0.4s ease;
-            cursor: pointer;
-        }
+    a:focus-visible {
+      outline: 2px solid var(--red);
+      outline-offset: 4px;
+    }
 
-        .flyer-logo-icon svg {
-            width: 80px;
-            height: 80px;
-            display: block;
-        }
+    .page {
+      width: min(1440px, 100%);
+      margin-inline: auto;
+      overflow: hidden;
+    }
 
-        /* Eyelid Styling & Animation */
-        .eyelid {
-            transform-box: fill-box;
-            transform-origin: center;
-            transform: scaleY(0);
-            transition: transform 0.15s ease-in-out;
-        }
+    .mono {
+      font-family: var(--mono);
+      font-size: .66rem;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+    }
 
-        @keyframes float-eerie {
-            0% { transform: translateY(0px) rotate(0deg); box-shadow: 0 5px 20px rgba(157, 78, 221, 0.7); }
-            50% { transform: translateY(-12px) rotate(1deg); box-shadow: 0 18px 30px rgba(255, 158, 44, 0.8); }
-            100% { transform: translateY(0px) rotate(0deg); box-shadow: 0 5px 20px rgba(157, 78, 221, 0.7); }
-        }
+    .masthead {
+      min-height: 86px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 32px;
+      padding: 0 6.2%;
+      border-bottom: 1px solid var(--line);
+    }
 
-        .flyer-logo-icon:hover {
-            transform: translateY(-18px) scale(1.12) rotate(-3deg);
-            border-color: var(--candle-amber);
-            box-shadow: 0 20px 40px rgba(255, 158, 44, 0.95), inset 0 0 25px rgba(255, 224, 148, 0.8);
-        }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
 
-        .flyer-logo-icon:hover .eyelid {
-            animation: blink-eye 0.4s ease-in-out infinite;
-        }
+    .brand-sigil {
+      width: 34px;
+      height: 34px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--ink);
+      border-radius: 50%;
+      font-family: var(--serif);
+      font-size: 1.5rem;
+      line-height: 1;
+    }
 
-        @keyframes blink-eye {
-            0%, 100% { transform: scaleY(0); }
-            50% { transform: scaleY(1); }
-        }
+    .brand-name {
+      display: block;
+      font-size: .83rem;
+      font-weight: 700;
+      letter-spacing: .15em;
+    }
 
-        h1.main-title {
-            font-family: 'Cinzel Decorative', cursive;
-            font-size: clamp(2.8rem, 8vw, 5rem);
-            font-weight: 900;
-            color: var(--gold-primary);
-            background: linear-gradient(180deg, #ffe094 0%, #e5a93c 50%, #8c580d 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 20px rgba(229, 169, 60, 0.4);
-            letter-spacing: 3px;
-            line-height: 1.1;
-            margin-bottom: 0.2rem;
-        }
+    .brand-sub {
+      display: block;
+      margin-top: 3px;
+      color: var(--muted);
+      font-family: var(--mono);
+      font-size: .54rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
 
-        .subtitle-banner {
-            font-family: 'Metamorphous', cursive;
-            font-size: clamp(1rem, 3.5vw, 1.8rem);
-            color: var(--gold-light);
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            border-top: 1px solid var(--gold-primary);
-            border-bottom: 1px solid var(--gold-primary);
-            display: inline-block;
-            padding: 0.2rem 2rem;
-            margin-top: 0.5rem;
-            margin-bottom: 1.5rem;
-            background: rgba(10, 7, 20, 0.6);
-        }
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: clamp(18px, 3vw, 42px);
+    }
 
-        .tagline {
-            font-size: 1.15rem;
-            color: var(--text-muted);
-            font-style: italic;
-            max-width: 600px;
-            margin: 0 auto;
-        }
+    .nav a {
+      font-size: .76rem;
+      text-decoration: none;
+    }
 
-        /* Cards Layout */
-        .tarot-card {
-            background: var(--bg-card);
-            border: 2px solid var(--gold-primary);
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.8), inset 0 0 15px rgba(229, 169, 60, 0.15);
-            border-radius: 8px;
-            padding: 2.5rem;
-            margin-bottom: 2.5rem;
-            position: relative;
-        }
+    .nav a:not(.nav-cta):hover { color: var(--red); }
 
-        .tarot-card::after {
-            content: "👁";
-            position: absolute;
-            top: 8px; right: 12px;
-            font-size: 0.9rem;
-            color: var(--gold-primary);
-            opacity: 0.6;
-        }
+    .nav-cta {
+      padding: 12px 16px;
+      border: 1px solid var(--ink);
+      transition: color .2s ease, background .2s ease;
+    }
 
-        h2.card-title {
-            font-family: 'Cinzel Decorative', cursive;
-            color: var(--gold-primary);
-            font-size: clamp(1.5rem, 4vw, 2.2rem);
-            margin-bottom: 1.2rem;
-            text-align: center;
-            border-bottom: 1px dashed rgba(229, 169, 60, 0.3);
-            padding-bottom: 0.8rem;
-        }
+    .nav-cta:hover {
+      color: var(--paper);
+      background: var(--ink);
+    }
 
-        p { color: var(--text-main); font-size: 1.1rem; margin-bottom: 1.2rem; }
+    /* Hero */
+    .hero {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr .88fr;
+      align-items: center;
+      gap: 4%;
+      min-height: 680px;
+      padding: 54px 8% 68px;
+    }
 
-        .event-feature {
-            background: linear-gradient(135deg, rgba(42, 27, 64, 0.9), rgba(15, 10, 26, 0.95));
-            border: 2px solid var(--candle-amber);
-            box-shadow: 0 0 20px rgba(255, 158, 44, 0.25);
-            text-align: center;
-        }
+    .hero::before {
+      position: absolute;
+      top: 52px;
+      left: 5.7%;
+      width: 1px;
+      height: 84%;
+      background: var(--line);
+      content: "";
+    }
 
-        .event-badge {
-            background: var(--candle-amber);
-            color: #000;
-            font-family: 'Metamorphous', cursive;
-            font-weight: bold;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            padding: 0.3rem 1rem;
-            display: inline-block;
-            border-radius: 3px;
-            margin-bottom: 1rem;
-        }
+    .hero-copy {
+      position: relative;
+      z-index: 1;
+      padding-left: 3%;
+    }
 
-        .event-details {
-            font-family: 'Metamorphous', cursive;
-            font-size: 1.25rem;
-            color: var(--gold-light);
-            margin: 1rem 0;
-            line-height: 1.8;
-        }
+    .edition {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--red);
+    }
 
-        .event-location { color: var(--text-muted); font-size: 1rem; margin-bottom: 1.5rem; }
+    .edition::before {
+      width: 28px;
+      height: 1px;
+      background: currentColor;
+      content: "";
+    }
 
-        .btn-group { display: flex; gap: 1.2rem; justify-content: center; flex-wrap: wrap; margin-top: 1.5rem; }
+    h1 {
+      max-width: 680px;
+      margin: 30px 0 24px;
+      font-family: var(--serif);
+      font-size: clamp(5.2rem, 10.4vw, 9.1rem);
+      font-weight: 400;
+      letter-spacing: -.065em;
+      line-height: .78;
+    }
 
-        .btn {
-            background: linear-gradient(180deg, #f7d287 0%, #e5a93c 50%, #9e6911 100%);
-            color: #0a0714;
-            font-family: 'Metamorphous', cursive;
-            font-weight: bold;
-            padding: 0.9rem 2rem;
-            border-radius: 4px;
-            text-decoration: none;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            box-shadow: 0 4px 15px rgba(229, 169, 60, 0.4);
-            transition: all 0.3s ease;
-            border: 1px solid #ffe094;
-            display: inline-block;
-            cursor: pointer;
-        }
+    h1 span { display: block; }
 
-        .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(255, 158, 44, 0.7);
-            background: linear-gradient(180deg, #ffe094 0%, #ff9e2c 100%);
-        }
+    h1 .italic {
+      padding-left: .28em;
+      color: var(--red);
+      font-style: italic;
+    }
 
-        .btn-secondary { background: transparent; color: var(--gold-primary); border: 1px solid var(--gold-primary); box-shadow: none; }
-        .btn-secondary:hover { background: rgba(229, 169, 60, 0.15); color: var(--gold-light); box-shadow: 0 0 12px rgba(229, 169, 60, 0.3); }
+    .hero-description {
+      max-width: 350px;
+      margin: 31px 0 26px;
+      color: #5f5a52;
+      font-size: .94rem;
+      line-height: 1.75;
+    }
 
-        .video-container {
-            position: relative;
-            padding-bottom: 56.25%;
-            height: 0;
-            overflow: hidden;
-            border: 1px solid var(--gold-primary);
-            border-radius: 6px;
-            margin: 1.5rem 0;
-            box-shadow: 0 0 15px rgba(0,0,0,0.8);
-        }
+    .hero-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 13px;
+      padding-bottom: 7px;
+      border-bottom: 1px solid var(--red);
+      color: var(--red-dark);
+      font-size: .77rem;
+      font-weight: 700;
+      letter-spacing: .07em;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
 
-        .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
+    .hero-link span {
+      font-size: 1.1rem;
+      transition: transform .2s ease;
+    }
 
-        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; margin-top: 1.5rem; }
+    .hero-link:hover span { transform: translate(3px, -3px); }
 
-        .gallery-item {
-            border: 2px solid var(--gold-primary);
-            background: #000;
-            border-radius: 6px;
-            overflow: hidden;
-            height: 280px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.8);
-            transition: transform 0.3s ease, border-color 0.3s ease;
-        }
+    .hero-footnote {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 48px;
+      color: var(--muted);
+    }
 
-        .gallery-item:hover { transform: scale(1.03); border-color: var(--candle-amber); }
-        .gallery-item img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
+    .hero-footnote .asterisk {
+      color: var(--red);
+      font-size: 1.25rem;
+    }
 
-        .oracle-box { text-align: center; background: radial-gradient(circle at center, rgba(42, 27, 64, 0.9) 0%, rgba(10, 7, 20, 0.95) 100%); border: 2px solid var(--gold-primary); }
+    .poster {
+      position: relative;
+      width: min(100%, 475px);
+      justify-self: end;
+      padding: 13px;
+      background: var(--red);
+      box-shadow: 17px 17px 0 rgba(32, 30, 26, .10);
+      transform: rotate(1.4deg);
+    }
 
-        #prompt-output {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.35rem;
-            font-style: italic;
-            color: var(--gold-light);
-            min-height: 4.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 1.5rem 0;
-            padding: 1rem;
-            background: rgba(0, 0, 0, 0.4);
-            border-radius: 6px;
-            border: 1px inset rgba(229, 169, 60, 0.3);
-        }
+    .poster-inner {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(238, 232, 220, .56);
+      background: #8e3029;
+    }
 
-        footer {
-            text-align: center;
-            padding: 2.5rem 1rem;
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            font-family: 'Inter', sans-serif;
-            border-top: 1px solid rgba(229, 169, 60, 0.2);
-            margin-top: 3rem;
-        }
+    .poster-label {
+      position: absolute;
+      z-index: 1;
+      top: 20px;
+      left: 21px;
+      color: var(--paper);
+    }
 
-        .footer-links { display: flex; justify-content: center; gap: 1.5rem; margin: 1rem 0; flex-wrap: wrap; }
-        .footer-link { color: var(--gold-light); text-decoration: none; font-family: 'Metamorphous', cursive; font-size: 0.95rem; transition: color 0.2s ease; }
-        .footer-link:hover { color: var(--candle-amber); text-decoration: underline; }
-    </style>
+    .poster-bottom {
+      position: absolute;
+      z-index: 1;
+      right: 18px;
+      bottom: 17px;
+      left: 18px;
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      color: var(--paper);
+    }
+
+    .poster-bottom strong {
+      font-family: var(--serif);
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 400;
+      letter-spacing: -.04em;
+    }
+
+    .poster-bottom span {
+      max-width: 100px;
+      font-family: var(--mono);
+      font-size: .58rem;
+      line-height: 1.5;
+      text-align: right;
+      text-transform: uppercase;
+    }
+
+    .poster svg { display: block; width: 100%; height: auto; }
+
+    .side-note {
+      position: absolute;
+      right: 2.3%;
+      top: 50%;
+      color: var(--muted);
+      writing-mode: vertical-rl;
+      transform: translateY(-50%);
+    }
+
+    /* Running line */
+    .ticker {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 23px;
+      min-height: 57px;
+      padding: 12px 18px;
+      color: var(--paper);
+      background: var(--ink);
+      text-align: center;
+    }
+
+    .ticker span:nth-child(even) { color: var(--gold); }
+
+    /* Shows */
+    .shows {
+      padding: 88px 10% 96px;
+    }
+
+    .section-topline {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      padding-bottom: 19px;
+      border-bottom: 1px solid var(--line);
+      color: var(--red);
+    }
+
+    .shows-heading {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 24px;
+      margin: 22px 0 38px;
+    }
+
+    .shows-heading h2,
+    .about h2 {
+      margin: 0;
+      font-family: var(--serif);
+      font-size: clamp(3rem, 6vw, 5.5rem);
+      font-weight: 400;
+      letter-spacing: -.055em;
+      line-height: .95;
+    }
+
+    .shows-heading p {
+      max-width: 210px;
+      margin: 0;
+      color: var(--muted);
+      font-size: .78rem;
+      line-height: 1.6;
+    }
+
+    .event {
+      display: grid;
+      grid-template-columns: 105px 1fr auto;
+      align-items: center;
+      gap: 24px;
+      padding: 24px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .event:last-child { border-bottom: 1px solid var(--line); }
+
+    .event-date {
+      color: var(--red);
+      font-family: var(--serif);
+      font-size: 2.6rem;
+      letter-spacing: -.04em;
+      line-height: .95;
+    }
+
+    .event-date small {
+      display: block;
+      margin-top: 8px;
+      color: var(--muted);
+      font-family: var(--mono);
+      font-size: .6rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    .event-info .mono { color: var(--muted); }
+
+    .event-info h3 {
+      margin: 5px 0 3px;
+      font-family: var(--serif);
+      font-size: 1.8rem;
+      font-weight: 400;
+      letter-spacing: -.025em;
+    }
+
+    .event-info p {
+      margin: 0;
+      color: var(--muted);
+      font-size: .78rem;
+    }
+
+    .event-ticket {
+      color: var(--red-dark);
+      font-family: var(--mono);
+      font-size: .68rem;
+      letter-spacing: .08em;
+      text-decoration: none;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .event-ticket:hover { text-decoration: underline; }
+
+    /* About */
+    .about {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 9%;
+      padding: 88px 10% 95px;
+      color: var(--paper);
+      background: var(--ink);
+    }
+
+    .about .mono { color: var(--gold); }
+
+    .about h2 {
+      max-width: 470px;
+      margin-top: 24px;
+    }
+
+    .about-copy {
+      max-width: 450px;
+      align-self: end;
+      color: #c9c3b7;
+      font-size: .92rem;
+      line-height: 1.85;
+    }
+
+    .about-copy p { margin: 0 0 19px; }
+
+    .quote {
+      margin-top: 33px;
+      padding-left: 18px;
+      border-left: 1px solid var(--red);
+      color: var(--paper);
+      font-family: var(--serif);
+      font-size: 1.8rem;
+      font-style: italic;
+      line-height: 1.2;
+    }
+
+    /* Footer */
+    footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      min-height: 90px;
+      padding: 20px 6.2%;
+      border-top: 1px solid rgba(238, 232, 220, .2);
+      color: var(--paper);
+      background: var(--ink);
+    }
+
+    .footer-brand {
+      font-family: var(--mono);
+      font-size: .62rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 23px;
+    }
+
+    .footer-links a {
+      color: #c9c3b7;
+      font-size: .72rem;
+      text-decoration: none;
+    }
+
+    .footer-links a:hover { color: var(--gold); }
+
+    @media (max-width: 850px) {
+      .hero {
+        grid-template-columns: 1fr .85fr;
+        gap: 20px;
+        padding-inline: 7%;
+      }
+
+      h1 { font-size: clamp(4.5rem, 11vw, 7rem); }
+
+      .poster { width: 100%; }
+
+      .side-note { display: none; }
+
+      .shows, .about { padding-inline: 7%; }
+    }
+
+    @media (max-width: 650px) {
+      .masthead {
+        min-height: 74px;
+        padding-inline: 6%;
+      }
+
+      .nav { gap: 14px; }
+      .nav a { font-size: .68rem; }
+      .nav-cta { padding: 10px; }
+
+      .hero {
+        grid-template-columns: 1fr;
+        gap: 43px;
+        padding: 63px 9% 55px;
+      }
+
+      .hero::before { left: 4%; }
+      .hero-copy { padding-left: 2%; }
+      h1 { font-size: clamp(5rem, 17vw, 7.5rem); }
+
+      .poster {
+        width: min(100%, 420px);
+        justify-self: center;
+      }
+
+      .hero-footnote { margin-top: 35px; }
+
+      .ticker {
+        flex-wrap: wrap;
+        gap: 8px 13px;
+        font-size: .56rem;
+      }
+
+      .shows, .about { padding: 66px 8%; }
+
+      .shows-heading {
+        align-items: start;
+        flex-direction: column;
+      }
+
+      .event {
+        grid-template-columns: 74px 1fr;
+        gap: 15px;
+      }
+
+      .event-date { font-size: 2.1rem; }
+
+      .event-ticket {
+        grid-column: 2;
+        margin-top: -5px;
+      }
+
+      .about { grid-template-columns: 1fr; gap: 35px; }
+
+      footer {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 27px 8%;
+      }
+    }
+
+    @media (max-width: 390px) {
+      .brand-name { font-size: .72rem; }
+      .brand-sub { font-size: .47rem; }
+      .nav { gap: 10px; }
+      .nav a { font-size: .62rem; }
+      .nav-cta { padding: 9px 7px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition-duration: .01ms !important; }
+    }
+  </style>
 </head>
+
 <body>
+  <div class="page">
+    <header class="masthead">
+      <a class="brand" href="#top" aria-label="SEYONCÉ home">
+        <span class="brand-sigil" aria-hidden="true">S</span>
+        <span>
+          <span class="brand-name">SEYONCÉ</span>
+          <span class="brand-sub">The improv company</span>
+        </span>
+      </a>
 
-    <div class="corner-star top-left">✦</div>
-    <div class="corner-star top-right">✦</div>
-    <div class="corner-star bottom-left">✦</div>
-    <div class="corner-star bottom-right">✦</div>
+      <nav class="nav" aria-label="Main navigation">
+        <a href="#about">The company</a>
+        <a href="#shows">Live dates</a>
+        <a class="nav-cta" href="#contact">Invite us ↗</a>
+      </nav>
+    </header>
 
-    <div class="container">
-        <!-- Header Section -->
-        <header>
-            <div class="flyer-logo-icon" title="Hover to blink!">
-                <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <!-- Eye & Orbit Group -->
-                    <g opacity="0.9">
-                        <path d="M50 15 C20 15 5 50 5 50 C5 50 20 85 50 85 C80 85 95 50 95 50 C95 50 80 15 50 15 Z" stroke="#e5a93c" stroke-width="4" fill="rgba(42,27,64,0.7)"/>
-                        <circle cx="50" cy="50" r="22" stroke="#f7d287" stroke-width="3" fill="#07050d"/>
-                        <circle cx="50" cy="50" r="10" fill="#9d4edd"/>
-                        <circle cx="47" cy="47" r="4" fill="#ffffff"/>
-                        <path d="M15 50 Q50 25 85 50" stroke="#ff9e2c" stroke-width="2" fill="none" opacity="0.6"/>
-                        <path d="M15 50 Q50 75 85 50" stroke="#ff9e2c" stroke-width="2" fill="none" opacity="0.6"/>
-                    </g>
-                    <!-- Eyelid for Hover Blink Effect -->
-                    <path class="eyelid" d="M50 15 C20 15 5 50 5 50 C5 50 20 85 50 85 C80 85 95 50 95 50 C95 50 80 15 50 15 Z" fill="#07050d" stroke="#e5a93c" stroke-width="4"/>
-                </svg>
-            </div>
-            <h1 class="main-title">Seyoncé</h1>
-            <div class="subtitle-banner">Improv Comedy</div>
-            <p class="tagline">Channeling punchlines, spectral wit, and unscripted mayhem from the great beyond.</p>
-        </header>
+    <main id="top">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="edition mono">An evening of unscripted theatre</p>
 
-        <!-- Featured Event -->
-        <section class="tarot-card event-feature">
-            <span class="event-badge">🔮 Featured Summoning</span>
-            <h2 class="card-title" style="color: var(--gold-light);">Seyoncé & Special Guests</h2>
-            <div class="event-details">
-                MISCHIEF NIGHT SEANCE!
-            </div>
-            <p style="font-size: 1.2rem; color: var(--text-main);">
-                <strong>Friday, October 30th at 8:00 PM</strong>
-            </p>
-            <div class="event-location">
-                📍 <strong>Bolero Snort Brewery</strong><br>
-                316 20th St, Carlstadt, NJ 07072
-            </div>
-            <p style="font-style: italic; color: var(--text-muted);">
-                Join us for an evening of live unscripted comedy, craft brews, and spirits of every variety.
-            </p>
-            <div class="btn-group">
-                <a href="https://www.eventbrite.com/e/mischief-night-at-bolero-snort-brewing-with-seyonce-improv-comedy-tickets-2003512339340?aff=oddtdtcreator" target="_blank" rel="noopener noreferrer" class="btn">Get Tickets on Eventbrite</a>
-            </div>
-        </section>
+          <h1 id="hero-title">
+            <span>Reality</span>
+            <span>is a</span>
+            <span class="italic">suggestion.</span>
+          </h1>
 
-        <!-- About Section -->
-        <section class="tarot-card">
-            <h2 class="card-title">Who We Are</h2>
-            <p>We are your premier comedic mediums, conjuring razor-sharp wit and unscripted brilliance out of thin air. Whether channeling historical specters or creating absurd theatrical magic on the fly, Seyoncé guarantees an evening of high-wire comedy where no two shows are ever identical.</p>
-            <div class="btn-group">
-                <a href="https://www.facebook.com/profile.php?id=61583459100000" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Facebook Page</a>
-                <a href="https://www.youtube.com/@Seyonc%C3%A9ImprovComedy" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">YouTube Channel</a>
-            </div>
-        </section>
+          <p class="hero-description">
+            A word from the audience. A world made up on the spot.
+            SEYONCÉ turns the unknown into a very good night out.
+          </p>
 
-        <!-- YouTube Video -->
-        <section class="tarot-card">
-            <h2 class="card-title">Watch the Spirits at Work</h2>
-            <p style="text-align: center; color: var(--text-muted);">FULL SHOW - Seyoncé Improv Comedy at Just Jakes:</p>
-            <div class="video-container">
-                <iframe 
-                    src="https://www.youtube.com/embed/loOxpFBRkts?start=45" 
-                    title="FULL SHOW - Seyoncé Improv Comedy at Just Jakes" 
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                    allowfullscreen>
-                </iframe>
-            </div>
-        </section>
+          <a class="hero-link" href="#shows">
+            Find your next show <span aria-hidden="true">↗</span>
+          </a>
 
-        <!-- Gallery Section -->
-        <section class="tarot-card">
-            <h2 class="card-title">Spectral Moments</h2>
-            <div class="gallery-grid">
-                <div class="gallery-item">
-                    <img src="photo3.jpeg" alt="Seyoncé troupe members laughing on stage">
-                </div>
-                <div class="gallery-item">
-                    <img src="IMG_0441.jpeg" alt="Seyoncé cast performing seated scene">
-                </div>
-                <div class="gallery-item">
-                    <img src="197C66E0-E0F6-4FCD-AE70-E09FE4BD6A3B.PNG" alt="Seyoncé Spirited Improv Comedy show poster">
-                </div>
-            </div>
-        </section>
-
-        <!-- Interactive Oracle Widget -->
-        <section class="tarot-card oracle-box">
-            <h2 class="card-title">The Digital Oracle</h2>
-            <p>Need a scene suggestion right now? Consult the crystal ball:</p>
-            <div id="prompt-output">"Two rival ghosts fighting over the last artisanal avocado toast in the afterlife."</div>
-            <button class="btn" onclick="generatePrompt()">Summon New Prompt</button>
-        </section>
-    </div>
-
-    <!-- Footer -->
-    <footer>
-        <p>☽ ☉ ☾</p>
-        <div class="footer-links">
-            <a href="https://www.facebook.com/profile.php?id=61583459100000" target="_blank" rel="noopener noreferrer" class="footer-link">Facebook</a>
-            <span>•</span>
-            <a href="https://www.youtube.com/@Seyonc%C3%A9ImprovComedy" target="_blank" rel="noopener noreferrer" class="footer-link">YouTube</a>
+          <p class="hero-footnote mono">
+            <span class="asterisk" aria-hidden="true">✳</span>
+            No script. No repeat performances.
+          </p>
         </div>
-        <p>&copy; 2026 Seyoncé Improv Comedy. All spirits reserved.</p>
+
+        <div class="poster">
+          <div class="poster-inner">
+            <span class="poster-label mono">Tonight, the universe is improvised</span>
+
+            <!-- Original inline poster artwork; no image download required. -->
+            <svg viewBox="0 0 500 620" role="img" aria-label="An illustrated eclipse above a theatrical stage">
+              <rect width="500" height="620" fill="#8e3029"/>
+
+              <!-- Fine poster border -->
+              <rect x="19" y="19" width="462" height="582" fill="none"
+                    stroke="#eee8dc" stroke-opacity=".65"/>
+
+              <!-- Concentric orbit lines -->
+              <circle cx="252" cy="265" r="183" fill="none"
+                      stroke="#eee8dc" stroke-opacity=".55"/>
+              <circle cx="252" cy="265" r="158" fill="none"
+                      stroke="#c59a55" stroke-opacity=".8" stroke-dasharray="2 8"/>
+              <circle cx="252" cy="265" r="130" fill="none"
+                      stroke="#eee8dc" stroke-opacity=".28"/>
+
+              <!-- Sun / eclipse -->
+              <circle cx="252" cy="265" r="91" fill="#c59a55"/>
+              <circle cx="283" cy="241" r="88" fill="#8e3029"/>
+
+              <!-- A few hand-drawn celestial marks -->
+              <g fill="#eee8dc">
+                <path d="m119 149 5 13 13 5-13 5-5 13-5-13-13-5 13-5z"/>
+                <path d="m366 161 4 10 10 4-10 4-4 10-4-10-10-4 10-4z"/>
+                <path d="m365 340 4 10 10 4-10 4-4 10-4-10-10-4 10-4z"/>
+                <circle cx="151" cy="349" r="3"/>
+                <circle cx="331" cy="116" r="3"/>
+              </g>
+
+              <!-- Theatre proscenium -->
+              <path d="M73 439V238c0-96 78-174 174-174s174 78 174 174v201"
+                    fill="none" stroke="#eee8dc" stroke-width="2" stroke-opacity=".8"/>
+              <path d="M93 439V240c0-85 69-154 154-154s154 69 154 154v199"
+                    fill="none" stroke="#c59a55" stroke-width="1.5"/>
+
+              <!-- Stage curtains -->
+              <path d="M76 438V249c31 20 43 58 42 104v85z" fill="#76251f"/>
+              <path d="M424 438V249c-31 20-43 58-42 104v85z" fill="#76251f"/>
+              <path d="M76 249c15 17 27 37 35 62M424 249c-15 17-27 37-35 62"
+                    fill="none" stroke="#c59a55" stroke-width="2"/>
+
+              <!-- Stage and lettering -->
+              <path d="M103 440h294l-22 25H125z" fill="#c59a55"/>
+              <path d="M125 465h250v8H125z" fill="#eee8dc"/>
+              <text x="250" y="425" text-anchor="middle" fill="#201e1a"
+                    font-family="Georgia,serif" font-size="27" letter-spacing="5">
+                SEYONCÉ
+              </text>
+              <text x="250" y="535" text-anchor="middle" fill="#eee8dc"
+                    font-family="monospace" font-size="11" letter-spacing="4">
+                THE UNEXPECTED IS THE POINT
+              </text>
+            </svg>
+
+            <div class="poster-bottom">
+              <strong>Come curious.</strong>
+              <span>Improvised<br>in real time</span>
+            </div>
+          </div>
+        </div>
+
+        <span class="side-note mono" aria-hidden="true">A small theatre for large possibilities · Est. ????</span>
+      </section>
+
+      <div class="ticker mono" aria-label="About the show">
+        <span>Live comedy</span><span>✳</span>
+        <span>Made in the moment</span><span>✳</span>
+        <span>Guided by the audience</span><span>✳</span>
+        <span>Never the same twice</span>
+      </div>
+
+      <section class="shows" id="shows" aria-labelledby="shows-title">
+        <div class="section-topline mono">
+          <span>Chapter 01 / The live experience</span>
+          <span>Dates subject to cosmic interference</span>
+        </div>
+
+        <div class="shows-heading">
+          <h2 id="shows-title">Come see<br>what happens.</h2>
+          <p>Two hours? One suggestion? Infinite possible realities.</p>
+        </div>
+
+        <!-- Replace sample dates, event names, venues, and ticket URLs. -->
+        <article class="event">
+          <div class="event-date">DD<small>Month · Year</small></div>
+          <div class="event-info">
+            <span class="mono">Next performance</span>
+            <h3>Your show title goes here</h3>
+            <p>Venue Name · City, State</p>
+          </div>
+          <a class="event-ticket" href="PASTE-TICKET-LINK-HERE">Tickets ↗</a>
+        </article>
+
+        <article class="event">
+          <div class="event-date">DD<small>Month · Year</small></div>
+          <div class="event-info">
+            <span class="mono">A future happening</span>
+            <h3>Another show title goes here</h3>
+            <p>Venue Name · City, State</p>
+          </div>
+          <a class="event-ticket" href="PASTE-TICKET-LINK-HERE">Tickets ↗</a>
+        </article>
+      </section>
+
+      <section class="about" id="about" aria-labelledby="about-title">
+        <div>
+          <p class="mono">A little about the company</p>
+          <h2 id="about-title">The plan is<br>not to have<br>a plan.</h2>
+        </div>
+
+        <div class="about-copy">
+          <p>
+            SEYONCÉ makes comedy in the moment: listening closely, taking
+            surprising turns, and building something together with the room.
+            Every performance starts with an audience suggestion and goes
+            somewhere nobody could have scripted.
+          </p>
+          <p>
+            Replace this paragraph with your group’s real story, style, and
+            point of view. The strongest version will sound like you—not like
+            a theatre brochure.
+          </p>
+          <div class="quote">“A delightfully strange night out.”</div>
+        </div>
+      </section>
+    </main>
+
+    <footer id="contact">
+      <span class="footer-brand">© SEYONCÉ · Improvised under the stars</span>
+      <div class="footer-links">
+        <a href="mailto:YOUR-EMAIL@example.com">Booking & contact</a>
+        <a href="PASTE-INSTAGRAM-LINK-HERE">Instagram ↗</a>
+      </div>
     </footer>
-
-    <script>
-        const prompts = [
-            "A support group for vampires who are terribly lactose intolerant.",
-            "Trying to return a cursed haunted antique at a garage sale without offending the ghoul.",
-            "A Shakespearean actor accidentally cast in a high-stakes corporate quarterly review.",
-            "Couples therapy between Dr. Frankenstein and his monster.",
-            "An alien civilization whose only contact with Earth is old episodes of home renovation shows.",
-            "Explaining modern Wi-Fi passwords to a Victorian ghost trapped in the router.",
-            "A fortune teller who can only see really mundane things 5 seconds into the future.",
-            "A ghost hunter trying to evict a spirit who pays rent on time.",
-            "A séance where the medium accidentally summons a disgruntled 1920s plumber.",
-            "An exorcist who keeps getting distracted by the haunted house’s open-concept kitchen.",
-            "A medieval witch attempting to explain her cauldron brew to a health inspector.",
-            "A grim reaper who takes a mental health day and leaves a temporary temp worker in charge.",
-            "A zombie trying to stick to a strict keto diet at a buffet.",
-            "Two competitive ghosts haunting the same suburban microwave.",
-            "A gargoyle applying for a remote customer support job.",
-            "A demon summoned by mistake during a middle school spelling bee.",
-            "An ancient mummy trying to navigate an airport TSA security checkpoint.",
-            "A potion master trying to sell artisanal witch's brew at a local farmer's market.",
-            "A banshee taking professional opera singing lessons to improve her scream.",
-            "A ghost trying to write a bad Yelp review for the house they're trapped in.",
-            "A werewolf struggling to explain his sudden hair growth to a corporate HR representative.",
-            "A séance where everyone keeps getting put on hold by the spirit world.",
-            "A poltergeist who uses their telekinetic powers exclusively for petty office pranks.",
-            "A clairvoyant tarot reader who only gets predictions about minor parking tickets.",
-            "A vampire trying to buy sunblock with an SPF of 10,000.",
-            "A haunted Ouija board that only communicates using emojis and modern internet slang.",
-            "A headless horseman trying to find an appropriate helmet for electric scooter commuting.",
-            "A swamp monster trying to negotiate a lease for a luxury high-rise apartment.",
-            "A spirit guide who gives terrible, hyper-specific financial advice.",
-            "A goblin trying to return a stolen pot of gold because of inflation.",
-            "A ghost trying to take a selfie for a paranormal dating app.",
-            "An undercover angel trying to blend in at a high-stakes poker tournament.",
-            "A witch's black cat demanding better union benefits and overtime tuna.",
-            "A séance medium who accidentally connects to a confused telemarketer in 1998.",
-            "A time-traveling Victorian ghost obsessed with air fryers."
-        ];
-
-        function generatePrompt() {
-            const randomIndex = Math.floor(Math.random() * prompts.length);
-            document.getElementById('prompt-output').textContent = `"${prompts[randomIndex]}"`;
-        }
-    </script>
+  </div>
 </body>
 </html>
