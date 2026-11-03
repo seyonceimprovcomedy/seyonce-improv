@@ -828,10 +828,10 @@
           <p class="mono" style="color:var(--gold);">The spirits are listening</p>
           <h2 class="contact-heading" id="contact-title">Contact / Book SEYONCÉ</h2>
           <p class="contact-intro">Want to book a show, collaborate, or just say hello? Send us a message. We’d love to hear from you.</p>
-          <form class="contact-form" id="contact-form" action="https://formsubmit.co/ajax/seyonceimprovcomedy@gmail.com" method="POST">
+          <form class="contact-form" id="contact-form" action="https://formsubmit.co/seyonceimprovcomedy@gmail.com" method="POST">
             <input type="hidden" name="_subject" value="New SEYONCÉ website inquiry">
             <input type="hidden" name="_template" value="table">
-            <input type="hidden" name="_url" value="https://seyonceimprovcomedy.com/#contact">
+            <input type="hidden" name="_next" value="https://seyonceimprovcomedy.com/?message=sent#contact">
             <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
             <div class="contact-field">
               <label for="contact-name">Your name</label>
@@ -876,43 +876,7 @@
 
 
 
-  <script>
-    (function () {
-      const form = document.getElementById("contact-form");
-      const sendButton = document.getElementById("contact-send");
-      const feedback = document.getElementById("contact-feedback");
-      if (!form || !sendButton || !feedback) return;
 
-      form.addEventListener("submit", async function (event) {
-        event.preventDefault();
-        if (!form.reportValidity()) return;
-
-        const originalLabel = sendButton.innerHTML;
-        sendButton.disabled = true;
-        sendButton.textContent = "Sending...";
-        feedback.textContent = "";
-
-        try {
-          const response = await fetch(form.action, {
-            method: "POST",
-            body: new FormData(form),
-            headers: { "Accept": "application/json" }
-          });
-          const result = await response.json();
-          if (!response.ok || String(result.success).toLowerCase() !== "true") {
-            throw new Error(result.message || "The form service could not accept the message.");
-          }
-          form.reset();
-          feedback.textContent = "Thank you! Your message has been sent to SEYONCÉ. We'll be in touch.";
-        } catch (error) {
-          feedback.textContent = "We could not send your message: " + (error.message || "Please try again.") + " You can also email seyonceimprovcomedy@gmail.com directly.";
-        } finally {
-          sendButton.disabled = false;
-          sendButton.innerHTML = originalLabel;
-        }
-      });
-    })();
-  </script>
 
 </body>
 </html>
