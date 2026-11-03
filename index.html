@@ -458,17 +458,37 @@
     }
 
     .ticket {
-      color: var(--gold);
+      display: inline-flex;
+      min-height: 43px;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      padding: 0 16px;
+      border: 1px solid var(--red-light);
+      color: var(--bone);
+      background: linear-gradient(135deg, #8f342e, #64221f);
+      box-shadow: 0 0 0 1px rgba(170, 75, 62, .18), 0 5px 18px rgba(0, 0, 0, .28);
       font-family: var(--mono);
-      font-size: .59rem;
-      letter-spacing: .1em;
+      font-size: .63rem;
+      font-weight: 500;
+      letter-spacing: .11em;
       text-decoration: none;
       text-transform: uppercase;
       white-space: nowrap;
+      transition: background .2s ease, border-color .2s ease, box-shadow .2s ease, transform .2s ease;
     }
 
     .ticket:hover {
-      color: var(--bone);
+      border-color: #d18b68;
+      color: #fff4df;
+      background: linear-gradient(135deg, #ad493d, #7d2925);
+      box-shadow: 0 0 18px rgba(170, 75, 62, .28), 0 7px 22px rgba(0, 0, 0, .35);
+      transform: translateY(-2px);
+    }
+
+    .ticket:focus-visible {
+      outline: 2px solid var(--bone);
+      outline-offset: 3px;
     }
 
     /* About */
