@@ -66,16 +66,15 @@
     body {
       margin: 0;
       color: var(--bone);
-      /* Let the oracle artwork carry its ink-black, antique-gold texture through the entire page. */
-      background-color: #050406;
+      /* Keep the oracle artwork as a quiet atmospheric texture, not a competing focal point. */
+      background-color: #070608;
       background-image:
-        linear-gradient(180deg, rgba(5, 4, 6, .28) 0%, rgba(5, 4, 6, .48) 42%, rgba(5, 4, 6, .68) 100%),
-        radial-gradient(ellipse at 50% 8%, rgba(172, 104, 48, .20), transparent 48%),
+        linear-gradient(180deg, rgba(5, 4, 6, .72) 0%, rgba(5, 4, 6, .82) 48%, rgba(5, 4, 6, .90) 100%),
         url("/oracle-artwork.webp");
-      background-size: cover, cover, min(100vw, 1500px) auto;
-      background-position: center top, center top, center top;
-      background-repeat: no-repeat, no-repeat, repeat-y;
-      background-attachment: fixed, fixed, fixed;
+      background-size: cover, min(100vw, 1500px) auto;
+      background-position: center top, center top;
+      background-repeat: no-repeat, repeat-y;
+      background-attachment: fixed, fixed;
       font-family: var(--serif);
       -webkit-font-smoothing: antialiased;
     }
