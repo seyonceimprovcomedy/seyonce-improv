@@ -4,8 +4,19 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#100d0e">
-  <title>SEYONCÉ A COMEDIC SÉANCE</title>
-  <meta name="description" content="Unscripted comedy for an unpredictable universe.">
+  <title>SEYONCÉ Improv Comedy | Unscripted Comedy in New Jersey</title>
+  <meta name="description" content="Experience SEYONCÉ, New Jersey's comedic séance. Live, unscripted improv comedy fueled by audience suggestions. Find upcoming shows and tickets.">
+  <link rel="canonical" href="https://seyonceimprovcomedy.com/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="SEYONCÉ Improv Comedy">
+  <meta property="og:title" content="SEYONCÉ Improv Comedy | An Improvised Comedic Séance">
+  <meta property="og:description" content="You bring the inspiration. We summon the scenes. Discover live, audience-driven improv comedy in New Jersey.">
+  <meta property="og:url" content="https://seyonceimprovcomedy.com/">
+  <meta property="og:image" content="https://seyonceimprovcomedy.com/seyonce-hero.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="SEYONCÉ Improv Comedy">
+  <meta name="twitter:description" content="Live, unscripted comedy fueled by your suggestions.">
+  <meta name="twitter:image" content="https://seyonceimprovcomedy.com/seyonce-hero.png">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -98,6 +109,8 @@
       text-decoration: none;
     }
 
+    .header-mark { display: block; flex: 0 0 auto; border-radius: 50%; }
+    .intro-line { max-width: 560px; margin: 15px auto 0; color: var(--bone); font-size: 1.12rem; line-height: 1.5; }
     .sigil {
       display: grid;
       width: 31px;
@@ -403,6 +416,9 @@
       letter-spacing: .1em;
     }
 
+    .appearance-details { min-width: 0; }
+    .event-eyebrow { margin: 0 0 5px !important; color: var(--gold) !important; font-size: .58rem !important; letter-spacing: .14em; }
+    .appearance-details p { margin: 5px 0; }
     .appearance h3 {
       margin: 0 0 3px;
       font-family: var(--serif);
@@ -546,6 +562,7 @@
         gap: 13px;
       }
 
+      .appearance .ticket { grid-column: 2; justify-self: start; margin-top: 3px; }
       .appearance h3 {
         font-size: 1.4rem;
       }
@@ -574,6 +591,7 @@
     }
 
     @media (max-width: 390px) {
+      .header-mark { width: 32px; height: 32px; }
       .wordmark strong {
         font-size: .76rem;
       }
@@ -620,17 +638,17 @@
   <div class="shell">
     <header class="masthead">
       <a class="wordmark" href="#top" aria-label="SEYONCÉ home">
-        <span class="sigil" aria-hidden="true">☽</span>
+        <img class="header-mark" src="/favicon.svg" alt="" width="38" height="38">
         <span>
           <strong>SEYONCÉ</strong>
-          <small>Spirited entertainment</small>
+          <small>Improvised comedy · New Jersey</small>
         </span>
       </a>
 
       <nav aria-label="Main navigation">
-        <a href="#appearances">Come to a Conjuring</a>
-        <a href="https://www.youtube.com/@Seyonc%C3%A9ImprovComedy">Video Evidence Files</a>
-        <a href="mailto: seyonceimprovcomedy@gmail.com">Summon Us</a>
+        <a href="#appearances">Upcoming Shows</a>
+        <a href="https://www.youtube.com/@Seyonc%C3%A9ImprovComedy" target="_blank" rel="noopener noreferrer">Videos</a>
+        <a href="#contact">Contact / Book Us</a>
       </nav>
     </header>
 
@@ -641,7 +659,7 @@
         <span class="corner bl" aria-hidden="true">✧</span>
         <span class="corner br" aria-hidden="true">✧</span>
 
-        <div class="bill-kicker mono">A Confabulation of Improv Comedy</div>
+        <div class="bill-kicker mono">Live · Unscripted · Audience-Powered</div>
 
         <h1 id="title">
           SEYONCÉ
@@ -649,6 +667,7 @@
         </h1>
 
         <p class="bill-subtitle">For the living · By the living · With your suggestions</p>
+        <p class="intro-line">A live comedy experience where your suggestions spark scenes nobody could script.</p>
 
         <div class="engraving" tabindex="0" aria-label="Hover over the eye to make it blink">
           <img src="seyonce-hero.png" alt="A realistic emerald eye in an antique gold frame, floating above a séance table with hands and candlelight">
@@ -662,7 +681,7 @@
               <filter id="lidSoft"><feGaussianBlur stdDeviation="10"/></filter>
             </defs>
             <g class="eye-lid">
-              <path d="M625 368 Q768 245 911 368 Q768 487 625 368Z" fill="url(#lidShade)" stroke="#190303TCX" stroke-width="1"/>
+              <path d="M625 368 Q768 245 911 368 Q768 487 625 368Z" fill="url(#lidShade)" stroke="#190303" stroke-width="1"/>
               <path d="M638 365 Q768 270 898 365" fill="none" stroke="#d3a64b" stroke-width="1" stroke-linecap="round"/>
               <path d="M650 373 Q768 397 886 378" fill="none" stroke="#090b06" stroke-width="1" stroke-linecap="round" filter="url(#lidSoft)"/>
             </g>
@@ -682,7 +701,7 @@
         </p>
 
         <a class="seal-link" href="#appearances">
-          Witness the proceedings <span aria-hidden="true">→</span>
+          Get Tickets <span aria-hidden="true">→</span>
         </a>
 
         <div class="bill-foot mono">
@@ -693,33 +712,35 @@
 
       <section class="appearances" id="appearances" aria-labelledby="appearances-title">
         <div class="section-heading">
-          <h2 id="appearances-title">Upcoming manifestations</h2>
-          <p class="mono">The future is subject to change</p>
+          <h2 id="appearances-title">Upcoming Shows</h2>
+          <p class="mono">Come see what the spirits have in store</p>
         </div>
 
-        <!-- Replace sample dates, event information, and ticket URLs. -->
         <article class="appearance">
-           <a class="ticket" href="https://www.eventbrite.com/e/montclair-comedy-festival-yip-yep-yup-improv-showcase-tickets-2003427062274"><div class="date">FRI 20<small>November · 2026</small></div>
-          <div></a>
-             <a class="ticket" href="https://www.eventbrite.com/e/montclair-comedy-festival-yip-yep-yup-improv-showcase-tickets-2003427062274"><h3>Montclair Comedy Festival</h3></a>
-             <a class="ticket" href="https://www.eventbrite.com/e/montclair-comedy-festival-yip-yep-yup-improv-showcase-tickets-2003427062274"><p>DiRasa House of Diversified Arts · Montclair, NJ</p></a>
+          <div class="date">FRI 20<small>November · 2026</small></div>
+          <div class="appearance-details">
+            <p class="event-eyebrow mono">Montclair Comedy Festival</p>
+            <h3>YIP! YEP! YUP! Improv Comedy Showcase</h3>
+            <p>Doors 6:30 PM · Show 7:00 PM · $25</p>
+            <p>DiRasa House of Diversified Arts – Main Stage<br>4 Lackawanna Plaza, Montclair, NJ 07042</p>
           </div>
-          <a class="ticket" href=https://www.eventbrite.com/e/montclair-comedy-festival-yip-yep-yup-improv-showcase-tickets-2003427062274">Reserve your place ↗</a>
+          <a class="ticket" href="https://www.eventbrite.com/e/montclair-comedy-festival-yip-yep-yup-improv-showcase-tickets-2003427062274" target="_blank" rel="noopener noreferrer">Get Tickets ↗</a>
         </article>
 
         <article class="appearance">
-           <a class="ticket" href="https://www.eventbrite.com/e/sleigh-what-improv-comedy-for-the-holidays-at-bolero-snort-brewery-tickets-2004236418079?aff=oddtdtcreator"><div class="date">SAT 12<small>December · 2026</small></div>
-          <div></a>
-             <a class="ticket" href="https://www.eventbrite.com/e/sleigh-what-improv-comedy-for-the-holidays-at-bolero-snort-brewery-tickets-2004236418079?aff=oddtdtcreator"><h3>Sleigh What?! Improv Comedy for the Holidays</h3></a>
-            <a class="ticket" href="https://www.eventbrite.com/e/sleigh-what-improv-comedy-for-the-holidays-at-bolero-snort-brewery-tickets-2004236418079?aff=oddtdtcreator"> <p>Bolero Snort Brewery · Carlstadt, NJ</p>
-          </div></a>
-          <a class="ticket" href="https://www.eventbrite.com/e/sleigh-what-improv-comedy-for-the-holidays-at-bolero-snort-brewery-tickets-2004236418079?aff=oddtdtcreator">Reserve your place ↗</a>
+          <div class="date">SAT 12<small>December · 2026</small></div>
+          <div class="appearance-details">
+            <p class="event-eyebrow mono">Holiday Special</p>
+            <h3>Sleigh What?! Improv Comedy for the Holidays</h3>
+            <p>Bolero Snort Brewery · Carlstadt, NJ</p>
+          </div>
+          <a class="ticket" href="https://www.eventbrite.com/e/sleigh-what-improv-comedy-for-the-holidays-at-bolero-snort-brewery-tickets-2004236418079?aff=oddtdtcreator" target="_blank" rel="noopener noreferrer">Get Tickets ↗</a>
         </article>
       </section>
 
       <section class="transcript" id="company" aria-labelledby="company-title">
         <div>
-          <div class="transcript-label mono">A fragment from a past séance</div>
+          <div class="transcript-label mono">Meet your comedic mediums</div>
           <h2 id="company-title">
             "Why did the chicken go to a Seyoncé show?”<br>
             “To talk to the Other Side.”
@@ -733,7 +754,7 @@
             world that exists for one night only.
           </p>
           <p class="aside">
-            We are your premiere comedic mediums, conjuring razor-sharp wit and unscripted brilliance out of thin air. Whether channeling historical specters or creating absurd theatrical magic on the fly, Seyoncé guarantees an evening of high-wire comedy where no two shows are ever identical.
+            We are your premier comedic mediums, conjuring razor-sharp wit and unscripted brilliance out of thin air. Your suggestions become scenes, and every performance takes a different turn. No scripts, no two shows alike—just a room full of people making something wonderfully unexpected together.
           </p>
         </div>
       </section>
@@ -743,9 +764,9 @@
       <span class="mono">SEYONCÉ · Improvised, for one night only</span>
       <div class="footer-links">
         <a href="mailto: seyonceimprovcomedy@gmail.com">Book the company</a>
-        <a href="https://www.youtube.com/@Seyonc%C3%A9ImprovComedy">See previous manifestations ↗</a>
-<a href="https://www.facebook.com/profile.php?id=61583459100000" target="_blank">FACEBOOK ↗</a>
-        <a href="https://www.instagram.com/seyonceimprovcomedy" target="_blank">INSTAGRAM ↗</a>
+        <a href="https://www.youtube.com/@Seyonc%C3%A9ImprovComedy" target="_blank" rel="noopener noreferrer">Watch performances ↗</a>
+<a href="https://www.facebook.com/profile.php?id=61583459100000" target="_blank" rel="noopener noreferrer">Facebook ↗</a>
+        <a href="https://www.instagram.com/seyonceimprovcomedy" target="_blank" rel="noopener noreferrer">Instagram ↗</a>
       </div>
     </footer>
   </div>
