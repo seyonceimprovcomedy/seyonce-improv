@@ -13,22 +13,40 @@
       <stop offset="1" stop-color="#f6d779"/>
     </linearGradient>
     <radialGradient id="iris" cx="38%" cy="30%" r="70%">
-      <stop stop-color="#ffb09a"/>
-      <stop offset=".34" stop-color="#e4473c"/>
-      <stop offset=".78" stop-color="#a31328"/>
+      <stop stop-color="#fff4d6"/>
+      <stop offset=".22" stop-color="#ff8b73"/>
+      <stop offset=".48" stop-color="#f02f3f"/>
+      <stop offset=".82" stop-color="#a31328"/>
       <stop offset="1" stop-color="#510b22"/>
     </radialGradient>
-    <filter id="glow"><feGaussianBlur stdDeviation="1.5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <radialGradient id="aura">
+      <stop offset="0" stop-color="#ff443f" stop-opacity=".72"/>
+      <stop offset=".48" stop-color="#ed254d" stop-opacity=".3"/>
+      <stop offset="1" stop-color="#ed254d" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="eyeGlow" x="-80%" y="-80%" width="260%" height="260%">
+      <feGaussianBlur stdDeviation="3.2" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="softGlow" x="-80%" y="-80%" width="260%" height="260%">
+      <feGaussianBlur stdDeviation="1.6"/>
+    </filter>
   </defs>
   <rect width="64" height="64" rx="14" fill="#09050e"/>
   <circle cx="32" cy="27" r="21.5" fill="url(#orb)" stroke="url(#gold)" stroke-width="2.7"/>
   <path d="M14 22 Q21 5 37 7" fill="none" stroke="#fff0ff" stroke-opacity=".8" stroke-width="2" stroke-linecap="round"/>
+  <!-- A faint crimson aura gives the eye a supernatural light source. -->
+  <ellipse cx="32" cy="30" rx="20" ry="17" fill="url(#aura)" filter="url(#softGlow)"/>
+  <path d="M12.5 30 Q32 9 51.5 30 Q32 51 12.5 30Z" fill="none" stroke="#ff514e" stroke-width="6" opacity=".9" filter="url(#eyeGlow)"/>
   <path d="M12.5 30 Q32 9 51.5 30 Q32 51 12.5 30Z" fill="#fff8e9" stroke="#10070d" stroke-width="3"/>
   <path d="M15.5 29 Q32 13 48.5 29" fill="none" stroke="#2a0c18" stroke-width="3.2" stroke-linecap="round"/>
-  <ellipse cx="32" cy="30" rx="9.2" ry="10.4" fill="url(#iris)" stroke="#6f1024" stroke-width="1.4"/>
+  <ellipse cx="32" cy="30" rx="10.5" ry="11.8" fill="#ff493f" opacity=".75" filter="url(#eyeGlow)"/>
+  <ellipse cx="32" cy="30" rx="9.2" ry="10.4" fill="url(#iris)" stroke="#ffb49b" stroke-width="1.1"/>
   <ellipse cx="32" cy="30" rx="4.1" ry="6.3" fill="#09050e"/>
   <circle cx="28.7" cy="25.8" r="2.7" fill="#fff"/>
   <circle cx="36.1" cy="33.7" r="1.2" fill="#fff" opacity=".95"/>
+  <!-- Tiny rays and glints reinforce the crystal-ball magic at favicon size. -->
+  <path d="M32 14v-3 M19 19l-2-2 M45 19l2-2 M17 39l-3 1 M47 39l3 1" stroke="#ff8b73" stroke-width="1.2" stroke-linecap="round" opacity=".95"/>
   <path d="M24 51 Q32 47 40 51 L43 56 Q32 60 21 56Z" fill="#28152b" stroke="url(#gold)" stroke-width="1.8"/>
   <path d="M19 56 Q32 60 45 56 L48 60 Q32 65 16 60Z" fill="#17101b" stroke="url(#gold)" stroke-width="1.5"/>
   <path d="M32 1.8V5 M5.5 17l3 1.5 M58.5 17l-3 1.5 M9 43l3-1 M55 43l-3-1" stroke="#e8bd63" stroke-width="1.2" stroke-linecap="round"/>
