@@ -296,7 +296,7 @@
     }
     @keyframes oracle-blink {
       0%, 100% { transform: scaleY(.015); opacity: 0; }
-      9%, 25% { transform: scaleY(1); opacity: 1; }
+      9%, 25% { transform: scaleY(1); opacity: .42; }
       37% { transform: scaleY(.015); opacity: 0; }
     }
     @media (prefers-reduced-motion: reduce) {
@@ -739,7 +739,7 @@
             </defs>
 
             <!-- A tiny reconstructed iris sits over the printed iris so it can track the pointer. -->
-            <g id="oracle-gaze" pointer-events="none">
+            <g id="oracle-gaze" pointer-events="none" opacity=".28">
               <circle cx="240" cy="198" r="17.5" fill="#170b10" stroke="#d18a55" stroke-width="1.1"/>
               <circle cx="240" cy="198" r="14.8" fill="#a64036"/>
               <circle cx="240" cy="198" r="12.2" fill="#e2a05b" opacity=".8"/>
@@ -750,7 +750,7 @@
               <circle cx="244" cy="201.5" r="1.1" fill="#fff0d5" opacity=".8"/>
             </g>
 
-            <g class="oracle-eyelid">
+            <g class="oracle-eyelid" opacity=".38">
               <path d="M194 198 Q240 155 286 198 Q240 239 194 198Z"
                     fill="url(#oracleLid)" stroke="#180b10" stroke-width="3"/>
               <path d="M197 195 Q240 159 283 195"
@@ -889,7 +889,7 @@
       const stage = document.querySelector(".engraving");
       const gaze = document.getElementById("oracle-gaze");
       if (!stage || !gaze) return;
-      const maxShift = 2.4;
+      const maxShift = 1.15;
       stage.addEventListener("pointermove", function (event) {
         if (event.pointerType === "touch") return;
         const bounds = stage.getBoundingClientRect();
