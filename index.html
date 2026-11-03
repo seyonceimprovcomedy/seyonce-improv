@@ -853,7 +853,8 @@
               <textarea id="contact-message" name="message" placeholder="Tell us a little about what you have in mind..." required></textarea>
             </div>
             <p class="contact-note">When you select Send Message, your email app will open with your message addressed to seyonceimprovcomedy@gmail.com. You can review it and press Send there.</p>
-            <button class="seal-link contact-submit" type="submit">Send Message <span aria-hidden="true">→</span></button>
+            <button class="seal-link contact-submit" id="contact-send" type="button">Send Message <span aria-hidden="true">→</span></button>
+            <p class="contact-note" id="contact-feedback" role="status" aria-live="polite"></p>
           </form>
         </div>
       </section>
@@ -872,19 +873,35 @@
 
 
   <script>
-    document.getElementById("contact-form").addEventListener("submit", function (event) {
-      event.preventDefault();
-      if (!this.reportValidity()) return;
-      const form = new FormData(this);
-      const name = String(form.get("name") || "").trim();
-      const email = String(form.get("email") || "").trim();
-      const topic = String(form.get("subject") || "").trim();
-      const message = String(form.get("message") || "").trim();
-      const subject = topic + " — Website inquiry from " + name;
-      const body = "Name: " + name + "\nEmail: " + email + "\nInquiry: " + topic + "\n\n" + message;
-      window.location.href = "mailto:seyonceimprovcomedy@gmail.com?subject=" +
-        encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
-    });
+    (function () {
+      const form = document.getElementById("contact-form");
+      const sendButton = document.getElementById("contact-send");
+      const feedback = document.getElementById("contact-feedback");
+      if (!form || !sendButton || !feedback) return;
+
+      sendButton.addEventListener("click", function () {
+        if (!form.reportValidity()) return;
+        const values = new FormData(form);
+        const name = String(values.get("name") || "").trim();
+        const email = String(values.get("email") || "").trim();
+        const topic = String(values.get("subject") || "").trim();
+        const message = String(values.get("message") || "").trim();
+        const subject = topic + " — Website inquiry from " + name;
+        const body = "Name: " + name + "\\nEmail: " + email +
+          "\\nInquiry: " + topic + "\\n\\n" + message;
+        const mailto = "mailto:seyonceimprovcomedy@gmail.com?subject=" +
+          encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
+
+        feedback.textContent = "If your email app did not open, use this link to open your message:";
+        const fallback = document.createElement("a");
+        fallback.href = mailto;
+        fallback.textContent = "Open your email draft";
+        fallback.style.cssText = "display:inline-block;margin-top:8px;color:var(--gold);text-decoration:underline";
+        feedback.appendChild(document.createElement("br"));
+        feedback.appendChild(fallback);
+        window.location.href = mailto;
+      });
+    })();
   </script>
 
 </body>
