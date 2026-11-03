@@ -824,7 +824,7 @@
       const topic = String(form.get("subject") || "").trim();
       const message = String(form.get("message") || "").trim();
       const subject = topic + " — Website inquiry from " + name;
-      const body = "Name: " + name + "\\nEmail: " + email + "\\nInquiry: " + topic + "\\n\\n" + message;
+      const body = "Name: " + name + "\nEmail: " + email + "\nInquiry: " + topic + "\n\n" + message;
       window.location.href = "mailto:seyonceimprovcomedy@gmail.com?subject=" +
         encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
     });
