@@ -831,6 +831,7 @@
           <form class="contact-form" id="contact-form" action="https://formsubmit.co/ajax/seyonceimprovcomedy@gmail.com" method="POST">
             <input type="hidden" name="_subject" value="New SEYONCÉ website inquiry">
             <input type="hidden" name="_template" value="table">
+            <input type="hidden" name="_url" value="https://seyonceimprovcomedy.com/#contact">
             <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
             <div class="contact-field">
               <label for="contact-name">Your name</label>
@@ -898,13 +899,13 @@
             headers: { "Accept": "application/json" }
           });
           const result = await response.json();
-          if (!response.ok || result.success === false) {
+          if (!response.ok || String(result.success).toLowerCase() !== "true") {
             throw new Error(result.message || "The form service could not accept the message.");
           }
           form.reset();
           feedback.textContent = "Thank you! Your message has been sent to SEYONCÉ. We'll be in touch.";
         } catch (error) {
-          feedback.textContent = "Sorry, your message couldn't be sent just now. Please email seyonceimprovcomedy@gmail.com directly, or try again in a moment.";
+          feedback.textContent = "We could not send your message: " + (error.message || "Please try again.") + " You can also email seyonceimprovcomedy@gmail.com directly.";
         } finally {
           sendButton.disabled = false;
           sendButton.innerHTML = originalLabel;
