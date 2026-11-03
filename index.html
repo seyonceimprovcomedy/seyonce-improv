@@ -251,7 +251,7 @@
 
     .engraving {
       position: relative;
-      width: min(760px, 100%);
+      width: min(560px, 100%);
       margin: 24px auto 0;
       line-height: 0;
       isolation: isolate;
@@ -551,10 +551,13 @@
 
       .masthead {
         min-height: 68px;
+        gap: 12px;
       }
 
       nav {
-        gap: 14px;
+        gap: 10px 14px;
+        flex-wrap: wrap;
+        justify-content: flex-end;
       }
 
       nav a {
