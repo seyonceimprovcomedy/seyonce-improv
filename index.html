@@ -738,18 +738,6 @@
               </linearGradient>
             </defs>
 
-            <!-- A tiny reconstructed iris sits over the printed iris so it can track the pointer. -->
-            <g id="oracle-gaze" pointer-events="none" opacity=".28">
-              <circle cx="240" cy="198" r="17.5" fill="#170b10" stroke="#d18a55" stroke-width="1.1"/>
-              <circle cx="240" cy="198" r="14.8" fill="#a64036"/>
-              <circle cx="240" cy="198" r="12.2" fill="#e2a05b" opacity=".8"/>
-              <circle cx="240" cy="198" r="10.5" fill="#a63836"/>
-              <path d="M230 191 Q240 184 250 191 M230 205 Q240 212 250 205" fill="none" stroke="#f0c17c" stroke-width="1" opacity=".75"/>
-              <circle cx="240" cy="198" r="7.2" fill="#09060a"/>
-              <circle cx="236.8" cy="194.8" r="2.5" fill="#fff0d5" opacity=".95"/>
-              <circle cx="244" cy="201.5" r="1.1" fill="#fff0d5" opacity=".8"/>
-            </g>
-
             <g class="oracle-eyelid" opacity=".38">
               <path d="M194 198 Q240 155 286 198 Q240 239 194 198Z"
                     fill="url(#oracleLid)" stroke="#180b10" stroke-width="3"/>
@@ -883,27 +871,7 @@
     </footer>
   </div>
 
-  <script>
-    // Let the oracle's pupil follow the pointer by only a few pixels.
-    (function () {
-      const stage = document.querySelector(".engraving");
-      const gaze = document.getElementById("oracle-gaze");
-      if (!stage || !gaze) return;
-      const maxShift = 1.15;
-      stage.addEventListener("pointermove", function (event) {
-        if (event.pointerType === "touch") return;
-        const bounds = stage.getBoundingClientRect();
-        const x = ((event.clientX - bounds.left) / bounds.width - 0.5) * 2;
-        const y = ((event.clientY - bounds.top) / bounds.height - 0.5) * 2;
-        const shiftX = Math.max(-maxShift, Math.min(maxShift, x * maxShift));
-        const shiftY = Math.max(-maxShift, Math.min(maxShift, y * maxShift));
-        gaze.setAttribute("transform", "translate(" + shiftX.toFixed(2) + " " + shiftY.toFixed(2) + ")");
-      });
-      stage.addEventListener("pointerleave", function () {
-        gaze.setAttribute("transform", "translate(0 0)");
-      });
-    })();
-  </script>
+
 
   <script>
     document.getElementById("contact-form").addEventListener("submit", function (event) {
