@@ -830,7 +830,6 @@
           <p class="contact-intro">Want to book a show, collaborate, or just say hello? Send us a message. We’d love to hear from you.</p>
           <form class="contact-form" id="contact-form" action="https://formspree.io/f/xeaaverg" method="POST">
             <input type="hidden" name="_subject" value="New SEYONCÉ website inquiry">
-            <input type="hidden" name="_next" value="https://seyonceimprovcomedy.com/?message=sent#contact">
             <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
             <div class="contact-field">
               <label for="contact-name">Your name</label>
@@ -874,8 +873,44 @@
   </div>
 
 
+  <script>
+    // Submit through Formspree in the background so visitors stay on this page.
+    const contactForm = document.getElementById("contact-form");
+    const contactFeedback = document.getElementById("contact-feedback");
+    const contactSend = document.getElementById("contact-send");
 
+    contactForm.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      contactFeedback.textContent = "Sending your message…";
+      contactFeedback.style.color = "var(--gold)";
+      contactSend.disabled = true;
+      contactSend.setAttribute("aria-busy", "true");
 
+      try {
+        const response = await fetch(contactForm.action, {
+          method: "POST",
+          body: new FormData(contactForm),
+          headers: { "Accept": "application/json" }
+        });
+        const result = await response.json();
+
+        if (!response.ok) {
+          const detail = result.errors?.map((error) => error.message).join(" ") || "Please try again in a moment.";
+          throw new Error(detail);
+        }
+
+        contactForm.reset();
+        contactFeedback.textContent = "Your message has been submitted. Thank you — the SEYONCÉ team will be in touch!";
+        contactFeedback.style.color = "var(--bone)";
+      } catch (error) {
+        contactFeedback.textContent = error.message || "We couldn’t send your message. Please try again, or email seyonceimprovcomedy@gmail.com directly.";
+        contactFeedback.style.color = "var(--red-light)";
+      } finally {
+        contactSend.disabled = false;
+        contactSend.removeAttribute("aria-busy");
+      }
+    });
+  </script>
 
 </body>
 </html>
