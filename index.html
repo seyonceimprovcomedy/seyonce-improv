@@ -273,39 +273,6 @@
       border: 0;
     }
 
-    /* A separate eyelid layer lets the realistic eye blink without moving the artwork. */
-    .eye-blink-layer {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      overflow: visible;
-      pointer-events: none;
-    }
-
-    .eye-lid {
-      transform-box: view-box;
-      transform-origin: 768px 370px;
-      transform: scaleY(0.015);
-      opacity: 0;
-    }
-
-    .engraving:hover .eye-lid,
-    .engraving:focus-within .eye-lid {
-      animation: realistic-blink 1.1s ease-in-out 1;
-    }
-
-    @keyframes realistic-blink {
-      0%, 100% { transform: scaleY(0.015); opacity: 0; }
-      8%, 24% { transform: scaleY(1); opacity: 1; }
-      35%, 100% { transform: scaleY(0.015); opacity: 0; }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      .engraving:hover .eye-lid,
-      .engraving:focus-within .eye-lid { animation: none; }
-    }
-
     .bill-line {
       width: min(400px, 80%);
       height: 1px;
@@ -649,15 +616,6 @@
         scroll-behavior: auto;
       }
 
-      .eye-float {
-        animation: none;
-      }
-
-      .mystic-eye:hover .eye-open,
-      .mystic-eye:hover .closed-lid {
-        animation: none;
-      }
-
       *, *::before, *::after {
         transition-duration: .01ms !important;
       }
@@ -781,7 +739,7 @@
     <footer id="contact">
       <span class="mono">SEYONCÉ · Improvised, for one night only</span>
       <div class="footer-links">
-        <a href="mailto: seyonceimprovcomedy@gmail.com">Book the company</a>
+        <a href="mailto:seyonceimprovcomedy@gmail.com">Book the company</a>
         <a href="https://www.youtube.com/@Seyonc%C3%A9ImprovComedy" target="_blank" rel="noopener noreferrer">Watch performances ↗</a>
 <a href="https://www.facebook.com/profile.php?id=61583459100000" target="_blank" rel="noopener noreferrer">Facebook ↗</a>
         <a href="https://www.instagram.com/seyonceimprovcomedy" target="_blank" rel="noopener noreferrer">Instagram ↗</a>
