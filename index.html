@@ -66,13 +66,11 @@
     body {
       margin: 0;
       color: var(--bone);
-      /* Match the oracle artwork: deep ink-black with restrained antique-gold warmth. */
+      /* Let the oracle artwork carry its ink-black, antique-gold texture through the entire page. */
       background-color: #050406;
       background-image:
-        radial-gradient(ellipse at 50% 12%, rgba(102, 43, 42, .13), transparent 42%),
-        radial-gradient(ellipse at 4% 48%, rgba(163, 105, 45, .075), transparent 32%),
-        radial-gradient(ellipse at 96% 82%, rgba(163, 105, 45, .065), transparent 34%),
-        linear-gradient(180deg, #070508 0%, #050406 58%, #080607 100%);
+        linear-gradient(rgba(5, 4, 6, .68), rgba(5, 4, 6, .78)),
+        url("/oracle-artwork.webp");
       background-size: cover;
       background-position: center top;
       background-repeat: no-repeat;
@@ -188,7 +186,7 @@
       outline: 1px solid rgba(170, 137, 82, .38);
       outline-offset: -8px;
       text-align: center;
-      background: rgba(10, 7, 8, .58);
+      background: rgba(10, 7, 8, .38);
       backdrop-filter: blur(1px);
     }
 
@@ -481,7 +479,7 @@
       gap: 8%;
       padding: 66px 9% 72px;
       border-block: 1px solid var(--rule);
-      background: rgba(8, 6, 7, .58);
+      background: rgba(8, 6, 7, .38);
       backdrop-filter: blur(1px);
     }
 
@@ -519,7 +517,7 @@
     .contact-section {
       padding: 72px 9% 78px;
       border-top: 1px solid var(--rule);
-      background: rgba(8, 6, 7, .62);
+      background: rgba(8, 6, 7, .42);
       backdrop-filter: blur(2px);
     }
     .contact-inner { max-width: 760px; margin: 0 auto; }
@@ -531,7 +529,7 @@
     .contact-field label { color: var(--gold); font-family: var(--mono); font-size: .62rem; letter-spacing: .12em; text-transform: uppercase; }
     .contact-field input, .contact-field select, .contact-field textarea {
       width: 100%; border: 1px solid rgba(210,187,144,.38); border-radius: 0;
-      padding: 12px 13px; color: var(--bone); background: rgba(10,7,8,.82);
+      padding: 12px 13px; color: var(--bone); background: rgba(10,7,8,.68);
       font: 1rem var(--serif);
     }
     .contact-field input:focus, .contact-field select:focus, .contact-field textarea:focus { outline: 1px solid var(--gold); outline-offset: 2px; }
