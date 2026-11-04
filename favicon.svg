@@ -1,54 +1,35 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
   <defs>
-    <radialGradient id="orb" cx="38%" cy="28%" r="72%">
-      <stop offset="0" stop-color="#e6c8ff"/>
-      <stop offset=".34" stop-color="#8652c7"/>
-      <stop offset=".72" stop-color="#35105f"/>
-      <stop offset="1" stop-color="#100718"/>
-    </radialGradient>
     <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
-      <stop stop-color="#fff0a6"/>
-      <stop offset=".38" stop-color="#d99b32"/>
-      <stop offset=".72" stop-color="#8d5015"/>
-      <stop offset="1" stop-color="#f6d779"/>
+      <stop stop-color="#fff3bd"/><stop offset=".42" stop-color="#e6a83e"/><stop offset=".72" stop-color="#9d551b"/><stop offset="1" stop-color="#ffe18a"/>
     </linearGradient>
-    <radialGradient id="iris" cx="38%" cy="30%" r="70%">
-      <stop stop-color="#fff4d6"/>
-      <stop offset=".22" stop-color="#ff8b73"/>
-      <stop offset=".48" stop-color="#f02f3f"/>
-      <stop offset=".82" stop-color="#a31328"/>
-      <stop offset="1" stop-color="#510b22"/>
+    <radialGradient id="iris" cx="38%" cy="30%" r="72%">
+      <stop stop-color="#fff8dd"/><stop offset=".18" stop-color="#ffb16d"/><stop offset=".42" stop-color="#ff3d28"/><stop offset=".75" stop-color="#d10e29"/><stop offset="1" stop-color="#5b071c"/>
     </radialGradient>
     <radialGradient id="aura">
-      <stop offset="0" stop-color="#ff443f" stop-opacity=".72"/>
-      <stop offset=".48" stop-color="#ed254d" stop-opacity=".3"/>
-      <stop offset="1" stop-color="#ed254d" stop-opacity="0"/>
+      <stop stop-color="#ff352e" stop-opacity=".95"/><stop offset=".42" stop-color="#e20d36" stop-opacity=".48"/><stop offset="1" stop-color="#d10c40" stop-opacity="0"/>
     </radialGradient>
-    <filter id="eyeGlow" x="-80%" y="-80%" width="260%" height="260%">
-      <feGaussianBlur stdDeviation="3.2" result="blur"/>
+    <filter id="glow" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
       <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
     </filter>
-    <filter id="softGlow" x="-80%" y="-80%" width="260%" height="260%">
-      <feGaussianBlur stdDeviation="1.6"/>
+    <filter id="soft" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur stdDeviation="1.5"/>
     </filter>
   </defs>
-  <rect width="64" height="64" rx="14" fill="#09050e"/>
-  <circle cx="32" cy="27" r="21.5" fill="url(#orb)" stroke="url(#gold)" stroke-width="2.7"/>
-  <path d="M14 22 Q21 5 37 7" fill="none" stroke="#fff0ff" stroke-opacity=".8" stroke-width="2" stroke-linecap="round"/>
-  <!-- A faint crimson aura gives the eye a supernatural light source. -->
-  <ellipse cx="32" cy="30" rx="20" ry="17" fill="url(#aura)" filter="url(#softGlow)"/>
-  <path d="M12.5 30 Q32 9 51.5 30 Q32 51 12.5 30Z" fill="none" stroke="#ff514e" stroke-width="6" opacity=".9" filter="url(#eyeGlow)"/>
-  <path d="M12.5 30 Q32 9 51.5 30 Q32 51 12.5 30Z" fill="#fff8e9" stroke="#10070d" stroke-width="3"/>
-  <path d="M15.5 29 Q32 13 48.5 29" fill="none" stroke="#2a0c18" stroke-width="3.2" stroke-linecap="round"/>
-  <ellipse cx="32" cy="30" rx="10.5" ry="11.8" fill="#ff493f" opacity=".75" filter="url(#eyeGlow)"/>
-  <ellipse cx="32" cy="30" rx="9.2" ry="10.4" fill="url(#iris)" stroke="#ffb49b" stroke-width="1.1"/>
-  <ellipse cx="32" cy="30" rx="4.1" ry="6.3" fill="#09050e"/>
-  <circle cx="28.7" cy="25.8" r="2.7" fill="#fff"/>
-  <circle cx="36.1" cy="33.7" r="1.2" fill="#fff" opacity=".95"/>
-  <!-- Tiny rays and glints reinforce the crystal-ball magic at favicon size. -->
-  <path d="M32 14v-3 M19 19l-2-2 M45 19l2-2 M17 39l-3 1 M47 39l3 1" stroke="#ff8b73" stroke-width="1.2" stroke-linecap="round" opacity=".95"/>
-  <path d="M24 51 Q32 47 40 51 L43 56 Q32 60 21 56Z" fill="#28152b" stroke="url(#gold)" stroke-width="1.8"/>
-  <path d="M19 56 Q32 60 45 56 L48 60 Q32 65 16 60Z" fill="#17101b" stroke="url(#gold)" stroke-width="1.5"/>
-  <path d="M32 1.8V5 M5.5 17l3 1.5 M58.5 17l-3 1.5 M9 43l3-1 M55 43l-3-1" stroke="#e8bd63" stroke-width="1.2" stroke-linecap="round"/>
-  <circle cx="15" cy="11" r="1" fill="#f4d889"/><circle cx="50" cy="10" r=".9" fill="#f4d889"/><circle cx="8" cy="32" r=".8" fill="#f4d889"/>
+  <rect width="64" height="64" rx="12" fill="#100514"/>
+  <rect x="2" y="2" width="60" height="60" rx="10" fill="none" stroke="url(#gold)" stroke-width="1.8"/>
+  <path d="M7 16Q13 5 25 6M57 16Q51 5 39 6M7 48Q13 59 25 58M57 48Q51 59 39 58" fill="none" stroke="url(#gold)" stroke-width="2" stroke-linecap="round"/>
+  <path d="M32 4V12M32 52V60M4 32H12M52 32H60M12 12l6 6M52 12l-6 6M12 52l6-6M52 52l-6-6" stroke="#f6bd54" stroke-width="1.1" stroke-linecap="round"/>
+  <circle cx="32" cy="32" r="25" fill="url(#aura)" filter="url(#soft)"/>
+  <path d="M8 32Q32 7 56 32Q32 57 8 32Z" fill="#fff4d9" stroke="#f4bd57" stroke-width="2.2" filter="url(#glow)"/>
+  <path d="M10 31Q32 10 54 31" fill="none" stroke="#24101a" stroke-width="3.5" stroke-linecap="round"/>
+  <path d="M10 33Q32 54 54 33" fill="none" stroke="#8e3328" stroke-width="1.3" stroke-linecap="round"/>
+  <circle cx="32" cy="32" r="13.5" fill="#ff342e" opacity=".85" filter="url(#glow)"/>
+  <circle cx="32" cy="32" r="11.2" fill="url(#iris)" stroke="#fff0b4" stroke-width="1"/>
+  <path d="M32 21.5V42.5M21.5 32H42.5M24.5 24.5L39.5 39.5M39.5 24.5L24.5 39.5" stroke="#ffdb75" stroke-width=".8" opacity=".8"/>
+  <ellipse cx="32" cy="32" rx="4.7" ry="7.2" fill="#09050d"/>
+  <circle cx="28.2" cy="26.8" r="2.5" fill="#fff"/>
+  <circle cx="36.5" cy="35.8" r="1.1" fill="#fff4d4"/>
+  <path d="M32 14V10M17 19l-3-3M47 19l3-3M17 45l-3 3M47 45l3 3" stroke="#ffb34c" stroke-width="1.4" stroke-linecap="round" filter="url(#glow)"/>
 </svg>
