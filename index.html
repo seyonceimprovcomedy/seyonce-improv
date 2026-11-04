@@ -551,8 +551,10 @@
     .step b { color:var(--red-light); font:1.35rem var(--display); }
     .step h3 { margin:8px 0 5px; font:italic 500 1.3rem var(--serif); }
     .step p { margin:0; color:var(--faded); line-height:1.5; }
-    .video-panel { display:flex; justify-content:space-between; align-items:center; gap:24px; padding:24px; border:1px solid var(--rule); background:rgba(10,7,8,.42); }
+    .video-panel { display:flex; flex-direction:column; align-items:flex-start; gap:18px; padding:24px; border:1px solid var(--rule); background:rgba(10,7,8,.42); }
     .video-panel p { margin:0; color:var(--faded); line-height:1.5; }
+    .video-embed { position:relative; width:min(100%,360px); aspect-ratio:9/16; overflow:hidden; border:1px solid var(--rule); background:#080608; box-shadow:0 8px 26px rgba(0,0,0,.35); }
+    .video-embed iframe { position:absolute; inset:0; width:100%; height:100%; border:0; }
     .faq-list { margin-top:22px; border-top:1px solid var(--rule); }
     .faq-list details { padding:17px 0; border-bottom:1px solid var(--rule); }
     .faq-list summary { cursor:pointer; color:var(--bone); font:italic 500 1.25rem var(--serif); }
@@ -560,7 +562,7 @@
     @media(max-width:700px) {
       .feature-section { padding:52px 5%; }
       .service-grid,.steps { grid-template-columns:1fr; }
-      .video-panel { align-items:flex-start; flex-direction:column; }
+
     }
 
     /* Contact */
@@ -894,8 +896,17 @@
           <p class="feature-kicker mono">Witness the inexplicable</p>
           <h2 class="feature-title" id="videos-title">See the comedy in action</h2>
           <div class="video-panel">
-            <div><p>Improv is best experienced live — but a glimpse helps. Visit our YouTube channel for SEYONCÉ performances and video updates.</p></div>
-            <a class="seal-link" href="https://www.youtube.com/@Seyonc%C3%A9ImprovComedy" target="_blank" rel="noopener noreferrer">Watch on YouTube ↗</a>
+            <div class="video-copy"><p>Improv is best experienced live — but a glimpse helps. Here's a taste of SEYONCÉ in action.</p></div>
+            <div class="video-embed">
+              <iframe
+                src="https://www.youtube-nocookie.com/embed/EuJ7VXDBFRY"
+                title="SEYONCÉ Improv Comedy — performance clip"
+                loading="lazy"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen></iframe>
+            </div>
+            <a class="text-link" href="https://youtube.com/shorts/EuJ7VXDBFRY" target="_blank" rel="noopener noreferrer">Watch on YouTube ↗</a>
           </div>
         </div>
       </section>
